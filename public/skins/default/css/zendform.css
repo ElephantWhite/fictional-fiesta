@@ -1,0 +1,59 @@
+@CHARSET "ISO-8859-1";
+
+.zend_form {
+	width:200px;
+}
+
+.zend_form fieldset legend{
+	font-size:12px;
+	font-weight:bold;
+}
+
+.zend_form dt{
+	padding:0;
+	clear:both;
+	width:150px;
+	float:left;
+	text-align:left;
+	margin:2px 2px 2px 0;
+}
+
+.zend_form dd{
+	padding:0;
+	float:left;
+	width:auto;
+	margin:2px 1px 2px 0;
+}
+
+.zend_form dd hidden{
+	margin:0 0 0 0;
+}
+
+.zend_form dt label{
+	font-weight:bold;
+	font-size:12px;
+}
+.zend_form p{
+	padding:0;
+	margin:0;
+}
+
+.zend_form dd input text{
+	padding:3;
+	width:200px;
+	align:left;
+	font-size:12px;
+}
+
+.zend_form textarea{
+	font-size:12px;
+}
+
+.zend_form select{
+	width : 150px;
+	font-size:12px;
+}
+
+.submit{
+float:right;
+}

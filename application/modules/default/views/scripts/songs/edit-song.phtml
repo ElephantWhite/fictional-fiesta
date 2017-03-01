@@ -1,0 +1,56 @@
+<script>
+    $('#frm_edit').submit(function(e) {
+        e.preventDefault();
+        $.post({
+            url: <?php echo $this->url(array('action' =>'index','controller' => 'Songs')); ?>,
+            data:$('#frm_add').serialize(),
+            success: function(){
+                //done
+            }
+        });
+    });
+</script>
+<?php
+$song = $this->ar_song;
+?>
+
+<form id="frm_edit">
+    <fieldset>
+        <legend>Edit '<?php echo $song->title; ?>' </legend>
+        <table>
+            <tbody>
+                <tr>
+                    <td><label for="txt_id">Song name:</label></td>
+                    <td><input readonly type="text" name="txt_id" id="txt_id" value="<?php echo $song->id ?>" /></td>
+                </tr>
+                <tr>
+                    <td><label for="txt_title">Song name:</label></td>
+                    <td><input required type="text" name="txt_title" id="txt_title" placeholder="Song name" value="<?php echo $song->title ?>" /></td>
+                </tr>
+                <tr>
+                    <td><label for="txt_length">Song length:</label></td>
+                    <td><input required type="text" name="txt_length" id="txt_length" placeholder="3:17" value="<?php echo $song->length; ?>" /></td>
+                </tr>
+                <tr>
+                    <td><label for="slct_album">Select album</label></td>
+                    <td>
+                        <select id="slct_album" name="slct_album">
+                            <?php
+                                foreach($this->ar_albums as $album)
+                                {
+                                    if($album['id'] == $song->album_id)
+                                        echo "<option selected value='" . $album['id'] . "'>" . $album['title'] . "</option>";
+                                    else
+                                        echo "<option value='" . $album['id'] . "'>" . $album['title'] . "</option>";
+                                }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="btn_submit" id="btn_submit" value="Save."></td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</form>

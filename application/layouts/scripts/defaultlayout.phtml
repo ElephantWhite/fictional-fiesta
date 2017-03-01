@@ -1,0 +1,190 @@
+<?php echo  $this->doctype(); ?>
+<html>
+	<head>
+	<title>Don's Zend poging.</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<?php 
+    	$s_buildnumber = $this->buildNumber();
+    	
+    	$this->loadSkin($this->baseUrl(), $this->getwebsitesettings($this->serverUrl(), 'skin'));
+    	$this->jQuery()->setLocalPath($this->baseUrl().'/javascript/jquery/'.$this->getwebsitesettings($this->serverUrl(), 'jquery').'?'.$this->buildnumber());
+    	$this->jQuery()->setUiLocalPath($this->baseUrl().'/javascript/jquery/'.$this->getwebsitesettings($this->serverUrl(), 'jquerythemejs').'?'.$this->buildnumber());
+    
+    	$this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/css/'.$this->getwebsitesettings($this->serverUrl(), 'jquerythemecss').'?'.$this->buildnumber());
+        $this->jQuery()->addStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+		$this->jQuery()->addStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+		//$this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/css/'.$this->getwebsitesettings($this->serverUrl(), 'micheljonk').'?'.$this->buildnumber());
+    	$this->jQuery()->addStylesheet('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css');
+    	$this->jQuery()->enable();
+    	$this->jQuery()->uiEnable();
+    	echo $this->jQuery();
+	?>
+	
+	<script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://raw.githubusercontent.com/dreyescat/bootstrap-rating/master/bootstrap-rating.min.js"></script>
+</head>
+<body>
+	<style>
+		body{
+			font-family: arial;
+			background-color:#ECF0F1;
+		}
+		
+		#top-menu{
+			background-color: #2C3E50;
+			padding-top: 0.5%;
+			padding-bottom: 0.5%;
+			padding-left: 5%;
+		}
+	
+		hr{
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+	
+		#top-menu #menu{
+			list-style: none;
+		
+		}
+		
+		#top-menu #menu li{
+			display: inline;
+			color: #ECF0F1;
+			padding-top: 3em;
+			padding-bottom: 1.4em;
+		}
+		
+		#top-menu #menu li a:hover{
+			color: #95A5A6;
+		}
+		.menu-item
+		{
+			color: #ECF0F1;
+			font-family: arial;
+			margin-right: 3%;
+			font-size: 30px;
+		}
+		#wrapper-content
+		{
+			margin-left: 100px;
+			margin-right: 100px;
+		}
+		#top-menu #menu{
+			display: inline;
+		}
+		.ui-autocomplete-category {
+	    	font-weight: bold;
+	    	padding: .2em .4em;
+	    	margin: .8em 0 .2em;
+	    	line-height: 1.5;
+	  	}
+	  	
+	  	#searchbalk
+	  	{
+	  		width: 300px;
+	  	}
+	  	
+
+	  	#menu_right
+	  	{
+	  		display: inline;
+	  		float: right;
+	  		margin-top: 0.4%;
+	  	}
+	  	.login_item
+	  	{
+	  		float: right;
+	  		display: inline;
+	  		margin-left: 2%;
+	  		margin-right: 2%;
+	  	}
+	</style>
+  <script>
+  $(document).ready(function(){
+  	
+  	 $.widget( "custom.catcomplete", $.ui.autocomplete, {
+    _create: function() {
+      this._super();
+      this.widget().menu( "option", "items", "> :not(.ui-autocomplete-category)" );
+    },
+    _renderMenu: function( ul, items ) {
+      var that = this,
+        currentCategory = "";
+      $.each( items, function( index, item ) {
+        var li;
+        if ( item.category != currentCategory ) {
+          ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>" );
+          currentCategory = item.category;
+        }
+        li = that._renderItemData( ul, item );
+        if ( item.category ) {
+          li.attr( "aria-label", item.category + " : " + item.label );
+        }
+      });
+    }
+  });
+ 
+ 
+    $( "#search" ).catcomplete({
+      delay: 0,
+      source: "/default/index/getseriesandfilms",
+		select: function (event, ui) { redirectToPage(ui.item.category, ui.item.id); }
+    });
+  });
+ 
+	function redirectToPage(type, id)
+	{
+		if(type == "Movies")
+		{
+			window.location.replace("/default/films/show/id/" + id);
+		}
+		else if(type == "Series")
+		{
+			window.location.replace("/default/series/show/id/" + id);
+		}
+		 
+	}
+	$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+  </script>
+	
+    <?php echo $this->flashMessages();?>
+    <div id="wrapper">
+    	<div id="top-menu">
+    		<ul id="menu">
+    			<li><a class='menu-item' href="/default/index/"><i class="fa fa-home fa-fw" data-toggle="tooltip" data-placement="bottom" title="Home"></i></a></li>
+    			<li><a class='menu-item' href="/default/series/"><i class="fa fa-television fa-fw" data-toggle="tooltip" data-placement="bottom" title="Series"></i></a></li>
+    			<li><a class='menu-item' href="/default/films/"><i class="fa fa-video-camera fa-fw" data-toggle="tooltip" data-placement="bottom" title="Films"></i></a></li>
+
+    		</ul>
+    		<?php if(!$this->CheckLogin()) {?>
+    				<div class="login_item"><a class="menu-item" href="/default/auth/login"><i class="fa fa-sign-in fa-fw" data-toggle="tooltip" data-placement="bottom" title="Login"></i></a></div>
+    				<div class="login_item"><a class="menu-item" href="/default/auth/signup"><i class="fa fa-user-plus fa-fw" data-toggle="tooltip" data-placement="bottom" title="Create Account"></i></a></div>
+
+    				<?php } else { ?>  
+    					<div class="login_item"><a class="menu-item" href="/default/auth/logout"><i class="fa fa-sign-out fa-fw" data-toggle="tooltip" data-placement="bottom" title="Logout"></i></a></div>
+    					<div class="login_item"><a class="menu-item" href="/default/auth/home"><i class="fa fa-user fa-fw" data-toggle="tooltip" data-placement="bottom" title="Your Account"></i></a></div>
+    					
+    					<?php } ?>	
+    		<div id="menu_right">
+    			<div id="searchbalk" class="input-group" >
+  					<span class="input-group-addon" id="sizing-addon2"><li class="fa fa-search"></li></span>
+  					<input type="text" id="search" class="form-control" placeholder="Search for..." aria-describedby="sizing-addon2">
+				</div>
+			   		
+    		</div>
+    		 
+    	</div>
+    	<hr>
+		<div id="wrapper-content">
+			<?php				
+	    		echo $this->layout()->content;
+			?>
+		</div>
+
+	</div>
+	
+</body>
+</html>

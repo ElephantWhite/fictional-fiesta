@@ -1,0 +1,132 @@
+.nav {
+	list-style:none;
+	font-weight:bold;
+	margin:1px;
+	/* Clear floats */
+	float:right;
+	font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+	background-color: #fff;
+    border-color: #ccc;
+    color: #777;
+    background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+    background-repeat: repeat-x;
+    border-color: #ccc;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, .15);
+	border-radius: 4px;
+}
+.nav li{
+	display: block;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.42857143;
+	color: #333;
+	white-space: nowrap;
+	padding: 0.4rem 1.0rem 0.4rem 1.0rem;
+	position: relative;
+}
+
+.nav li:hover {
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.nav li ul li:hover {
+	color: white;
+	background-color: #2e6da4;
+	background-image: -webkit-linear-gradient(top, #337ab7 0%, #2e6da4 100%);
+	background-image:      -o-linear-gradient(top, #337ab7 0%, #2e6da4 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#337ab7), to(#2e6da4));
+	background-image:         linear-gradient(to bottom, #337ab7 0%, #2e6da4 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff2e6da4', GradientType=0);
+	background-repeat: repeat-x;
+}
+
+.nav li ul li:hover a{
+	color: white;
+}
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.nav a{
+	width: 100%;
+	display:block;
+	text-decoration:none;
+	text-align: left;
+	float: left;
+}
+
+/*--- DROPDOWN ---*/
+.nav ul{
+	z-index: 100;
+	background:#fff; /* Adding a background makes the dropdown work properly in IE7+. Make this as close to your page's background as possible (i.e. white page == white background). */
+	background:rgba(255,255,255,0); /* But! Let's make the background fully transparent where we can, we don't actually want to see it if we can help it... */
+	list-style:none;
+	position:absolute;
+    display:none; /*If menu item is not hovered hide sub-menu*/
+	float: left;
+	min-width: 160px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	font-size: 14px;
+	text-align: left;
+	list-style: none;
+	background-color: #fff;
+	-webkit-background-clip: padding-box;
+    background-clip: padding-box;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, .15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.nav li ul li {
+	padding: 0rem;
+}
+
+.nav ul li a{
+	display: block;
+	padding-top:1px; /* Introducing a padding between the li and the a give the illusion spaced items */
+	float:none;
+    margin-right:0;
+    padding: 0.4rem 0.8rem 0.4rem 1.0rem;
+    padding-left: 20px;
+}
+.nav ul a{
+	white-space:nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+}
+.nav li:hover ul{ /* Display the dropdown on hover */
+    display: block; /*DISPLAY ONLY WHEN ITEM IS HOVERED*/
+    right: 0;
+}
+
+.nav .divider {
+  height: 1px;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.nav .divider:hover {
+	color: white;
+	background-image:none;
+	background-color: #e5e5e5;
+}
+
+.dropdown-menu-icon{
+	left: 0;
+    padding: 0.6rem 0.4rem 0.4rem 0.2rem;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 1.5rem;
+}

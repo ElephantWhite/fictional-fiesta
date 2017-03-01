@@ -1,0 +1,7 @@
+<?php
+
+foreach($this->ar_albums as $album)
+{
+    echo $album['id'] . " " . $album['artist'] . ": " . $album['title'] . "  <a href='editAlbum?id=" . $album['id'] . "'>Edit</a> ";
+    echo "<hr><br />";
+}

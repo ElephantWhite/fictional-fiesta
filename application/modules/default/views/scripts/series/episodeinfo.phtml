@@ -1,0 +1,126 @@
+<div id="one_episode_content">
+	<div id="backDiv">
+		<p id="backButton">◀  Return</p>
+	</div>
+	<style>
+		#backButton
+		{
+			font-size: 1.5em;
+			font-weight: bold;
+			cursor: pointer;
+			background-color: #0A2338;
+			width: 10%;
+			color: #ECF0F1;
+			padding: 1%;
+			margin-top: 1%;
+			margin-bottom: 2%;
+		}
+		#one_episode_title_zone
+		{
+			width: 100%;
+			padding-bottom: 1.5%;
+			padding-top: 1.5%;
+			background-color: #34495E;
+			position: relative;
+		}
+		#one_episode_title
+		{
+			margin-left: 2%;
+			color: #ECF0F1;
+			font-size: 2em;
+			width: 70%;
+			display: inline;
+			cursor: pointer;
+		}
+		#one_episode_content_zone
+		{
+			background-color: #617487;
+			padding-bottom: 1%;
+		}
+		#one_episode_seasonepisode
+		{
+			padding: 1%;
+			background-color: #0A2338;
+			color: #ECF0F1;
+			font-size: 2em;
+			width: 70%;
+			display: inline;
+			cursor: pointer;
+		}
+		#one_episode_date
+		{
+			position: absolute;
+			right: 0;
+			top: 2%;
+			padding: 1%;
+			background-color: #0A2338;
+			color: #ECF0F1;
+			font-size: 2em;
+			width: auto;
+			margin-top: 3%;
+			cursor: pointer;
+		}
+		
+		
+		#cont_episode
+		{
+			margin-left: 5%;
+		}
+		#one_episode_description
+		{
+			color: #ECF0F1;
+		}
+		
+		#text_episode_description
+		{
+			color: #ECF0F1;
+			font-size: 1.5em;
+		}
+		
+	</style>
+	
+	<?php $o_episode = $this->o_episode; ?>
+	
+	<?php if($o_episode != null){?>
+		
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$(document).on("click", "#backButton", function(){
+				$("#seriePanel").css("display", "block");
+				$('#one_episode_content').remove();
+				
+				
+			});
+			
+			refreshEpisodeReviews();
+			function refreshEpisodeReviews()
+			{
+				$("#reviewBoxS<?php echo $o_episode['id_season'] . "E" . $o_episode['id_episode']; ?>").load("/default/reviews/show/idserie/" + $('#serie_id').attr("value") + "/idseason/<?php echo $o_episode['id_season']; ?>/idepisode/<?php echo $o_episode['id_episode']; ?>");
+			}
+			
+		});
+	
+	</script>
+		
+	<div id="one_episode_content_zone">
+		<div id="one_episode_title_zone">
+			<h1 id="one_episode_title"> <?php echo $o_episode['epd_title']; ?></h1>
+			<h1 id="one_episode_date"> <?php echo $o_episode['epd_date']; ?></h1>
+		</div>
+		<div id="cont_episode">
+			<p id="text_episode_description">Description</p>
+			<p id="one_episode_description"> <?php echo $o_episode['epd_description']; ?></p>
+		</div>
+		<div class="reviewBox" id="reviewBoxS<?php echo $o_episode['id_season']; ?>E<?php echo $o_episode['id_episode']; ?>">
+			
+		</div>
+	</div>
+
+	<?php } else { ?>
+		
+		<p>This episode could not be found!</p>
+		
+		<?php } ?>
+</div>
+
+

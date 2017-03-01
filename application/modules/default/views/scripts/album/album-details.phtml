@@ -1,0 +1,60 @@
+<head>
+    <style>
+        .table_space {
+            padding: 10px 10px 10px 10px;
+        }
+    </style>
+</head>
+<?php
+
+$count = count($this->ar_albums);
+if($count == 0)
+{
+    echo "Album doesn't exist";
+    die();
+}
+else if($count > 1 )
+{
+    echo "Something went wrong, try another album.";
+    die();
+}
+$var = null;
+echo "<a href='/album/index'>Index</a><br />";
+foreach($this->ar_albums as $album)
+{
+    $var = $album['id'];
+    echo "<h2>" . $album['title'] . "</h2><a href='/default/album/editAlbum?id=".$album['id']."'>Edit</a>";
+    echo "<p>Album title: " . $album['title'] . "</p>";
+    echo "<p>Album by: " . $album['artist'] . "</p>";
+    echo "<p>Album id: " . $album['id'] . "</p>";
+    echo "<p>Album length: " . $album['album_length'] . "</p>";
+    $amount_of_songs = count($this->ar_songs);
+    echo "<p>Songs: " . $amount_of_songs . "</p>";
+}
+
+?>
+
+<table>
+    <thead>
+        <tr>
+            <th class="table_space">Song title:</th>
+            <th class="table_space">Song length:</th>
+            <th class="table_space">Song Id:</th>
+            <?php echo "<th class='table_space'><a href='/default/songs/addSong?album=" . $var . "'>Add song to album</a><th/>"?>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
+    $songs = $this->ar_songs;
+    foreach($songs as $song)
+    {
+        echo "<tr>";
+        echo "<td class='table_space'><a href='/default/songs/songDetails?id=".$song['id'] . "'>" . $song['title'] . "</a></td>";
+        echo "<td class='table_space'>" . $song['length'] . "</td>";
+        echo "<td class='table_space'>" . $song['id'] . "</td>";
+        echo "</tr>";
+    }
+    ?>
+    </tbody>
+</table>
+

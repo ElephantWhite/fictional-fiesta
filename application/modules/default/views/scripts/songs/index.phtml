@@ -1,0 +1,46 @@
+<head>
+    <style>
+        .table_space {
+            padding: 10px 10px 10px 10px;
+        }
+    </style>
+</head>
+
+<?php
+echo "<a href='/default/songs/addSong'>New song</a><br />";
+echo "<a href='/default/album/index'>Album overview</a>";
+//include "C:/wamp64/www/root3/application/repository/AlbumRepository.php";
+$songs = $this->ar_songs;
+?>
+<table>
+    <thead>
+    <tr>
+        <th class="table_space">Song id</th>
+        <th class="table_space">Song title</th>
+        <th class="table_space">Song length</th>
+        <th class="table_space">Album</th>
+        <th class="table_space">Options</th>
+    </tr>
+    </thead>
+    <?php
+    foreach ($songs as $song):
+        $album = AlbumRepository::LoadAlbum($song->album_id);
+        ?>
+
+        <tbody>
+            <tr>
+                <td class="table_space"><?php echo $song->id; ?></td>
+                <td class="table_space"><?php echo $song->title; ?></td>
+                <td class="table_space"><?php echo $song->length; ?></td>
+                <td class="table_space"><?php echo "<a href='/default/album/albumDetails?id=" . $song->album_id . "'>" . $album->title . "</a>"; ?></td>
+
+                <?php
+                    $edit_url = "/default/songs/editSong?id=".$song->id;
+                    $details_url = "/default/songs/songDetails?id=".$song->id;
+                    $delete_url = "/default/songs/deleteSong?id=".$song->id;
+                 ?>
+                <td class="table_space"><a href="<?php echo $details_url; ?>">Details</a> || <a href="<?php echo $edit_url; ?>">Edit</a> || <a href="<?php echo $delete_url; ?>">Delete</a></td>
+            </tr>
+        </tbody>
+    <?php endforeach;
+echo "</table>";

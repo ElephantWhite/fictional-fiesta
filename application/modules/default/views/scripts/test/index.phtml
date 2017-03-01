@@ -1,0 +1,138 @@
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <style></style>
+  </head>
+  <body>
+  <script>
+      $(document).ready(function(){
+         $("#uncheck_all_situations").on("click", function(){
+         	 $(".special_situation").prop("checked", false);
+             $(".special_situation[value='Nee']").prop("checked", true); 
+         });
+         
+         $("#verzend").on("click", function(){
+         	$.ajax({ // ajax call starts
+		      url: '/default/test/sendmail', // JQuery loads serverside.php
+		      data: $("#form_send").serialize(), // Send value of the clicked button
+		    })
+		    .done(function(data) { // Variable data contains the data we get from serverside
+		     	if(data.result == "success"){
+		     		$("body").append(data.reason);
+		     	}
+		     	else if(data.result == "failed"){
+		     		alert(data.reason);
+		     	}
+		    });
+		    return false;
+         });
+      });
+  </script>
+      <div>
+          <p>Beste gebruiker van het Verzuimportaal van De Arbodienst,<br/><br/>
+ 
+Het is bijna zo ver. Op maandag 23 mei 2016 stapt De Arbodienst over naar een nieuwe softwareleverancier. Voor u, als gebruiker van het Verzuimportaal, betekent dit ook een overstap naar andere software. De Arbodienst heeft gekozen voor het softwarepakket Xpert Suite van leverancier Empirion. Vanaf heden kunt u daarom geen gebruik meer maken van de functionaliteiten van het Verzuimportaal. In de periode van 18 tot en met 22 mei 2016 zal alle data overgezet worden van het Verzuimportaal naar Xpert Suite. Daarom is het niet mogelijk om nieuwe informatie toe te voegen of wijzigingen door te voeren. <br/><br/>
+ 
+Verzuimregistratieformulier 
+Verzuimmeldingen kunt u tot 23 mei eenvoudig doorgeven via onderstaand verzuimregistratieformulier. Dit formulier wordt, nadat u het hebt ingevuld, verzonden naar de casemanagers van de REA Desk. Een van de casemanagers zal de verzuimmelding op de gebruikelijke wijze in behandeling nemen en de verzuimbegeleiding starten. Wijzigingen in het arbeidsongeschiktheidspercentage of beter-meldingen kunt u in de periode van 18 tot en met 20 mei telefonisch doorgeven via het telefoonnummer 088 - 700 2040. Alle lopende en afgesloten verzuimdossiers zijn vanaf maandag 23 mei toegankelijk in Xpert Suite.<br/><br/>
+ 
+Inloggen Xpert Suite
+ In het weekend van 21 en 22 mei 2016 ontvangt u twee separate mails met inlognaam en wachtwoord. Vanaf maandag 23 mei kunt u met deze inloggegevens, inloggen in Xpert Suite. De URL naar Xpert Suite is: <a href="https://de-arbodienst.xpertsuite.nl">https://de-arbodienst.xpertsuite.nl</a>
+ <br/><br/>
+
+Wij danken u bij voorbaat voor uw begrip en zullen er alles aandoen om de hinder voor u zo kort en beperkt mogelijk te houden. 
+ <br/><br/>
+Met vriendelijke groet,<br/>
+Het team van De Arbodienst</p>
+      </div>
+      <form method="post" name="form_send" id="form_send">
+        <h2>Gegevens</h2>
+        <label for="person_name">Werknemer</label><br/>
+        <input type="text" name="person_name" id="person_name"><br/>
+        
+        <label for="phonenumber">Telefoonnummer</label><br/>
+        <input type="tel" name="phonenumber" id="phonenumber"><br/>
+        
+        <label for="email">Emailadres</label><br/>
+        <input type="email" name="email" id="email"><br/>
+        
+        <label for="workgiver_name">Werkgeversnaam</label><br/>
+        <input type="text" name="workgiver_name" id="workgiver_name"><br/>
+        
+        <label for="contact_name">Contactpersoons naam</label><br/>
+        <input type="text" name="contact_name" id="contact_name"><br/>
+        
+        <h4>Verzuimgegevens</h4>
+        <label for="sick_date">Per wanneer heeft de werknemer(wn) zich ziekgemeld?</label><br/>
+        <span>Vanaf <input type="date" name="sick_date" id="sick_date" />(dd-mm-jjjj)</span><br/>
+        <span>voor <input type="number" name="arbeidsongeschikt" id="arbeidsongeschikt" /> % arbeidsongeschikt</span><br/>
+        
+        <label for="address">Op welk adres verblijft de werknemer</label><br/>
+        <textarea id="address" name="address"></textarea><br/>
+        
+        <label for="complaints">Welke klachten zijn door werknemer gemeld?</label><br/>
+        <select id="complaints" name="complaints">
+            <option>Ziek</option>
+            <option>Ziek t.g.v. zwangerschap</option>
+            <option>Arbeidsconflict</option>
+        </select><br/>
+        
+        <label for="abscence_time">Verwachte verzuimduur?</label><br/>
+        <select id="abscence_time" name="abscence_time">
+            <option>1 of 2 dagen</option>
+            <option>3 of 4 dagen</option>
+            <option>5, 6, 7 dagen</option>
+            <option>1-2 weken</option>
+            <option>3-4 weken</option>
+            <option>4-6 weken</option>
+            <option>Langer dan 6 weken</option>
+            <option>Onbekend</option>
+        </select><br/>
+        
+        <label for="do_able_work">Welke werkzaamheden kan werknemer nog verrichten?</label><br/>
+        <textarea id="do_able_work" name="do_able_work"></textarea><br/>
+        
+        <label>Heeft werknemer zich onder behandeling geplaats?</label>
+        <span><input type="radio" name="treated" value="Ja">Ja</span>
+        <span><input type="radio" name="treated" value="Nee">Nee</span>
+        <span><input type="radio" name="treated" value="Onbekend">Onbekend</span>
+        
+        <h4>Bijzondere situaties</h4>
+        <p>In een aantal gevallen geldt een afwijkende regeling. Het kan dan mogelijk zijn om bepaalde stappen over te slaan of eerder een uitkering aan te vragen.</p>
+        <p style="color: red; ">Indien onderstaande situaties niet van toepassing zijn, klik dan <a style="color: black;" id="uncheck_all_situations">hier</a>.</p>
+        
+        <label>Heeft/had werknemer en WAO/WAZ/WIA uitkering?</label>
+        <span><input type="radio" class="special_situation" name="has_payment" value="Ja">Ja</span>
+        <span><input type="radio" class="special_situation" name="has_payment" value="Nee">Nee</span><br/>
+        
+        <label>Is/was de werknemers arbeidsgehandicapt?</label>
+        <span><input type="radio" class="special_situation" name="handicapped" value="Ja">Ja</span>
+        <span><input type="radio" class="special_situation" name="handicapped" value="Nee">Nee</span><br/>
+        
+        <label>Eindigt het dienstverband binnenkort?</label>
+        <span><input type="radio" class="special_situation" name="end_contract" value="Ja">Ja</span>
+        <span><input type="radio" class="special_situation" name="end_contract" value="Nee">Nee</span><br/>
+        <label for="contract_end_date">Zo ja wanneer</label>
+        <span><input type="date" id="contract_end_date" name="contract_end_date"></span><br/>
+        
+        <label>Is de arbeidsingeschiktheid het gevolg van zwangerschap/bevalling/orgaandonatie?</label>
+        <span><input type="radio" class="special_situation" name="pregnant_donation" value="Ja">Ja</span>
+        <span><input type="radio" class="special_situation" name="pregnant_donation" value="Nee">Nee</span><br/>
+        
+        <label>Is er sprake van arbeidsconflict</label>
+        <span><input type="radio" class="special_situation" name="labor_dispute" value="Ja">Ja</span>
+        <span><input type="radio" class="special_situation" name="labor_dispute" value="Nee">Nee</span><br/>
+        
+        <label>Is de arbeidsongeschiktheid veroorzaakt door een (bedrijfs)ongeval?</label>
+        <span><input type="radio" class="special_situation" name="injury" value="Ja">Ja</span>
+        <span><input type="radio" class="special_situation" name="injury" value="Nee">Nee</span><br/>
+        
+        <label>Kan de (verzuim)schade verhaald worden (regres)?</label>
+        <span><input type="radio" class="special_situation" name="damage_story" value="Ja">Ja</span>
+        <span><input type="radio" class="special_situation" name="damage_story" value="Nee">Nee</span>
+      	<button id="verzend">Verzenden</button>
+      </form>
+         
+  </body>
+</html>

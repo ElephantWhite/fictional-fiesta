@@ -1,0 +1,310 @@
+<style>
+	.panel
+	{
+		margin-left: 30%; margin-right: 30%; margin-top: 5%;
+	}
+	.input-group
+	{
+		margin-bottom: 2%;
+	}
+	#buttons
+	{
+		float: right;
+	}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$("#edit_username").on("click", function(){
+			if($("#username_input").attr("disabled"))
+			{
+				
+				$(this).html("Save");
+				$("#username_input").removeAttr( "disabled" );
+			}
+			else
+			{
+				saveUsername();
+				$(this).html("Edit");
+				$("#username_input").attr("disabled", "");
+			}
+			
+		});
+		
+		$("#edit_email").on("click", function(){
+			if($("#email_input").attr("disabled"))
+			{
+				$(this).html("Save");
+				$("#email_input").removeAttr( "disabled" );
+			}
+			else
+			{
+				saveEmail();
+				$(this).html("Edit");
+				$("#email_input").attr("disabled", "");
+			}
+			
+		});
+		
+		$("#change_password_button").on("click", function(){
+			var oldpass = $("#old_password_input").val();
+			var newpass = $("#password_input").val();
+			var newpassagain = $("#password_again_input").val();
+			changePassword(oldpass, newpass, newpassagain);
+		});
+		
+		$("#close_password_button").on("click", function(){
+			closePasswordModal();
+		});
+		
+		$("#deactivate_account_button").on("click", function(){
+			$("#deactivate_account_form").validate();
+			if($("#deactivate_account_form").valid())
+			{
+				$.ajax({
+                    type: "POST",
+                    url: "/default/auth/deactivateaccount/",
+                    data: $("#deactivate_account_form").serialize(),
+                    dataType: "json",
+                    success: function(data, status){
+                        if(data.result == "failure")
+                        {
+                        	$("#deactivate_account_error").html(data.error);
+                        	$("#deactivate_account_error").css("display", "block");
+                        }
+                        else if(data.result == "success")
+                        {
+                        	window.location.replace("/");
+                        }
+                  	}
+                   
+                });
+			}
+  				
+		});
+		
+		function closePasswordModal()
+		{
+			$("#old_password_input").val("");
+			$("#password_input").val("");
+			$("#password_again_input").val("");
+			$("#error_password").css("display", "none");
+			$("#modal_change_password").modal('hide');
+			
+		}
+		
+		function changePassword(oldpassword, newpassword, newpasswordagain){
+			if(newpassword == newpasswordagain && newpassword != oldpassword)
+			{
+				$("#change_password_form").validate();
+				if($("#change_password_form").valid()){
+					$.ajax({
+	                    type: "POST",
+	                    url: "/default/auth/changepassword/",
+	                    data: $("#change_password_form").serialize(),
+	                    dataType: "json",
+	                    success: function(data, status){
+	                        if(data.result == "success")
+	                        {
+	                        	closePasswordModal()
+	                        	$("#success_alert").html("Your password has been succesfully changed.");
+	                        	$("#success_alert").css("display", "block");
+	                        	
+		                         
+	                        }
+	                        else if(data.result == "failure")
+	                        {
+	                        	$("#error_password").html(data.error);
+	                        	$("#error_password").css("display", "block");
+	                        }
+	                  	}         
+					});
+
+				}
+			}
+			else
+			{
+				if(oldpassword == newpassword)
+				{
+					$("#error_password").html("Old and new password are the same!");
+				}
+				else
+				{
+					$("#error_password").html("Passwords dont match!");
+				}
+				
+				$("#error_password").css("display", "block");
+			}
+		}
+		
+		function saveEmail(){
+			$("#account_form").validate();
+			if($("#account_form").valid()){
+				  $.ajax({
+                    type:		"POST",
+                    url:		"/default/auth/save_email/",
+                    data:		$("#account_form").serialize(),
+                    dataType:	"json",
+                    success: function(data, status){
+                        if(data.result == "success")
+                        {
+	                         $("#email_input").attr("val", data.email);
+                        }
+                        else if(data.result == "exists")
+                        {
+                        	$("#email_input").attr("val", data.email);
+                        	alert("Email already exists!");
+                        }
+                        else if(data.result == "failure")
+                        {
+                        	$("#email_input").attr("val", data.email);
+                        }
+                  	}
+                   
+                });
+			}
+			
+			
+		}
+		
+		function saveUsername(){
+			$("#account_form").validate();
+			if($("#account_form").valid()){
+ 				$.ajax({
+                    type:		"POST",
+                    url:		"/default/auth/save_username/",
+                    data:		$("#account_form").serialize(),
+                    dataType:	"json",
+                    success:	function(data, status){
+                    	
+                        if(data.result == "success")
+                        {
+                        	$("#username_input").attr("username", data.username);
+                        }
+                        else if (data.result == "exists")
+                        {
+                        	$("#username_input").attr("username", data.username);
+                        	alert("Username already exists!");
+                        }
+                        else if(data.result == "failure")
+                        {
+                        	$("#username_input").attr("username", data.username);
+                        	alert(data.error);
+                        }
+                  	}
+                   
+                });
+ 			}
+			
+			
+		}
+	});
+</script>
+<form method="POST" id="account_form">
+	
+<div id="home">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Account Information</h3>
+	  </div>
+	  <div class="panel-body">
+	  	
+	    <div class="input-group">
+	      <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user fa-fw"></i></span>
+	      <input id="username_input" name="username_input" aria-describedby="basic-addon1" disabled="true" class="form-control" value="<?php echo $_SESSION['user'][0]['usr_username']; ?>" required>
+	      <span class="input-group-btn">
+	        <button class="btn btn-default" id="edit_username" type="button">Edit</button>
+	      </span>
+    	</div>
+
+    	 <div class="input-group">
+	      <span class="input-group-addon" id="basic-addon1"><i class="fa fa-envelope fa-fw"></i></span>
+	      <input id="email_input" name="email_input" aria-describedby="basic-addon1" disabled class="form-control" value="<?php echo $_SESSION['user'][0]['usr_email']; ?>" required>
+	      <span class="input-group-btn">
+	        <button class="btn btn-default" id="edit_email" type="button">Edit</button>
+	      </span>
+    	</div>
+
+    	<div id="buttons">
+    		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_deactivate_account">Deactivate Account</button>
+    		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_change_password">Change Password</button>
+    	</div>
+	  </div>
+	  <div id="success_alert" style="display: none" class="alert alert-success" role="alert"></div>
+	</div>
+</div>
+
+</form>
+
+<div id="password_change_modal">
+	<form method="post" id="change_password_form">
+		<div class="modal fade" tabindex="-1" role="dialog" id="modal_change_password">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Change Password</h4>
+		      </div>
+		      <div class="modal-body">
+		      	
+		      	<div class="input-group">
+			      <span class="input-group-addon" id="basic-addon1"><i class="fa fa-unlock-alt fa-fw"></i></span>
+			      <input type="password" required id="old_password_input" name="old_password_input" aria-describedby="basic-addon1" class="form-control" placeholder="Enter old password" required>
+		    	</div>
+		    	
+		        <div class="input-group">
+			      <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key fa-fw"></i></span>
+			      <input type="password" required id="password_input" name="password_input" aria-describedby="basic-addon1" class="form-control" placeholder="Enter new password" required>
+		    	</div>
+		    	
+		    	<div class="input-group">
+			      <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key fa-fw"></i></span>
+			      <input type="password" required id="password_again_input" name="password_again_input" aria-describedby="basic-addon1" class="form-control" placeholder="Enter new password again" required>
+		    	</div>
+		    	
+		    	<div id="error_password" style="display: none;" class="alert alert-danger" role="alert"></div>
+		      </div>
+		      <div class="modal-footer">
+		        <button id="close_password_button" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button id="change_password_button" type="button" class="btn btn-primary">Change Password</button>
+		      </div>
+		      
+		    </div>
+		  </div>
+		</div>
+	</form>
+</div>
+
+<div id="deactivate_account_modal">
+	<form method="post" id="deactivate_account_form">
+		<div class="modal fade" tabindex="-1" role="dialog" id="modal_deactivate_account">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Deactivate Account</h4>
+		      </div>
+		      <div class="modal-body">
+		      	
+		      	<p>Do you really want to deactivate your account?</p>
+		      	
+		      	<div class="input-group">
+			      <span class="input-group-addon" id="basic-addon1"><i class="fa fa-unlock-alt fa-fw"></i></span>
+			      <input type="password" required id="deactivate_password_input" name="deactivate_password_input" aria-describedby="basic-addon1" class="form-control" placeholder="Enter your password">
+		    	</div>
+		    	
+		    	<div id="deactivate_account_error" style="display: none;" class="alert alert-danger" role="alert"></div>
+		      </div>
+		      
+		      <div class="modal-footer">
+		        <button id="close_deactivate_account_button" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button id="deactivate_account_button" type="button" class="btn btn-danger">Deactivate Account</button>
+		      </div>
+		      
+		    </div>
+		  </div>
+		</div>
+	</form>
+</div>
+
+

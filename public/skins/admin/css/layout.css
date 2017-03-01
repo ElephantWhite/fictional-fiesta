@@ -1,0 +1,299 @@
+@CHARSET "ISO-8859-1";
+
+html, body {
+    min-height: 			100%;
+    width: 					100%;
+    height: 				100%;
+	margin: 				0;
+    padding:				0;
+    font-family: 			"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:				14px;
+    color:					black;
+}
+
+html>body #wrapper{ height: auto; }
+
+body {
+	background-color: #f0f3f4; /* Standard syntax */
+}
+
+.iframe-background {
+	background-color: white;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+h1 {
+	padding: 0px;
+	color: #004a8d;
+	margin: 0px;
+	font-size: 16px;
+	margin-left: 10px; 
+}
+
+h2 {
+	padding: 0px;
+	color: black;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+h2 a {
+	padding: 0px;
+	color: black;
+}
+
+h3 {
+	padding: 0px;
+	margin: 0px;
+	color: #564aa3;
+}
+
+h4 {
+	padding: 0px;
+	margin: 0px;
+	color: #029ccd;
+    font-size: 14px;
+}
+
+h5 {
+	padding: 0px;
+	margin: 0px;
+	color: #f05050;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+hr {
+	border: 1px solid #029ccd
+}
+
+legend {
+	font-size: 16px;
+}
+
+ul { 
+	list-style-type: none;
+	 padding-left: 0px; 
+}
+
+.top-menu {
+    background-image: linear-gradient(to bottom, #FFFFFF 0px, #F8F8F8 100%);
+    background-repeat: repeat-x;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 5px rgba(0, 0, 0, 0.075);
+}
+
+.top-menu-inverse {
+    background-image: linear-gradient(to bottom, #3C3C3C 0px, #222222 100%);
+    background-repeat: repeat-x;
+}
+
+.top-menu-static-top, .top-menu-fixed-top, .top-menu-fixed-bottom {
+    border-radius: 0;
+}
+
+#top-menu-content {
+	width: 960px;
+	margin: 0px auto;
+	padding: 5px;
+	height: 40px;
+}
+
+#top-menu-buttons {
+	float: left;
+	padding-top: 5px;
+}
+
+#top-menu-logout {
+	float: right;
+	padding-top: 5px;
+}
+
+#btn-options {
+	float: right;
+	padding-top: 5px;
+	padding-right: 10px;
+	
+}
+
+.btn-top-menu {
+	float: left;
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+.btn-task-list {
+	text-align: left !important;
+}
+
+.ui-progressbar span { 
+    width:100%;
+    padding-top: 5px;
+    position:absolute;
+    text-align:center;
+    font-weight:bold;
+}  
+
+#content-home {
+	height: 545px;
+}
+
+#logo {
+	z-index: 20;
+	top:0px;
+	padding-top: 10px;
+	width: 100%;
+	height: 50px;
+	font-size: 24px;
+	color: white;
+	text-align: center;
+}
+
+#buttonbar {
+	float: right;
+	padding-right: 20px;
+	padding-top: 8px;
+}
+
+#breadcrum {
+	float: left;
+	padding-left: 15px;
+	margin-top: 66px;
+}
+
+#content-background {
+	background-image: url('/images/background-optimit-admin.jpg');
+	background-repeat:repeat-x;
+ 	padding: 120px 10px 20px 10px;
+	width: calc(100% - 20px);
+} 
+ 
+#content-background-iframe {
+	background-color: white;
+	min-height: 250px;
+	padding: 22px;
+} 
+
+#iframe-uploadimage {
+	width: 570px;
+	min-height: 300px;
+	overflow: none;
+}
+
+#iframe-uploadfile {
+	width: 570px;
+	min-height: 300px;
+	overflow: none;
+}
+
+#div-logout{
+	position: absolute;
+	right: 10px;
+}
+
+#div-quick-search{
+	position: absolute;
+	right: 20px;
+	top: 64px;
+}
+
+#div-quick-search {
+  color: #aaa;
+  font-size: 16px;
+}
+
+#div-quick-search input {
+  width: 250px;
+  height: 32px;
+  background: #fcfcfc;
+  border-radius: 5px;
+}
+
+#div-quick-search input { text-indent: 32px;}
+#div-quick-search .fa-search { 
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#div-logout a {
+	color: #4b4b4b;
+}
+
+.btn-new-top-right {
+	float: right;
+}
+
+.table-group {
+	color: #1867b3;
+}
+
+tr.group,
+tr.group:hover {
+    background-color: #ddd !important;
+}
+.td-form-title {
+	vertical-align: top;
+	color: #444444;	
+	padding: 7px 0px;
+}
+
+.td-form-view-relation {
+    background-color: #fff;
+    background-image: none;
+    color: #555;
+    display: block;
+    line-height: 1.42857;
+    padding: 7px 6px;
+    width: 50%;
+}
+
+.td-form-view-address {
+    background-color: #fff;
+    background-image: none;
+    color: #555;
+    display: block;
+    line-height: 1.42857;
+    padding: 7px 6px;
+    width: 90%;
+}
+
+.td-form-view-product {
+    background-color: #fff;
+    background-image: none;
+    color: #555;
+    display: block;
+    line-height: 1.42857;
+    padding: 7px 6px;
+    width: 30%;
+}
+.td-form-title-gray {
+	vertical-align: top;
+	color: Gray;
+	font-size: 12px;	
+}
+
+.td-center-datatable {
+	text-align: center;
+}
+
+.td-left-datatable {
+	text-align: left;
+}
+
+.td-right-datatable {
+	text-align: right;
+}
+
+.box-shadow {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.inputbox {
+	width: 250px;
+}

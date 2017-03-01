@@ -1,0 +1,189 @@
+<style>
+	.paneltje, #search_panel
+	{
+		border: 1px solid black;
+		padding-bottom: 2%;
+	}
+	
+	.title_panel
+	{
+		margin-left: 2%;
+		font-weight: bold;
+		cursor: pointer;
+	}
+	.label_input
+	{
+		display: block;
+	}
+	
+	#search_textbox
+	{
+		margin-left: 1%;
+		width: 90%;
+	}
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function(){	
+		var type = '<?php echo strtolower($this->type); ?>';
+		$(".checkbox").on('click', function(){
+            setform();
+		});
+		
+		$('#search_textbox').keyup(function(e){
+    		
+    		setform();
+    		
+    		if(e.keyCode == 13)
+    		{
+       			 
+   			}
+		});
+	
+		function setform()
+		{
+			var urltje = null;
+			if(type == "series")
+			{
+				urltje = "/default/index/serieslist"
+			}
+			else if(type == "movies")
+			{
+				urltje = "/default/index/filmlist"
+			}
+		    datastring = $("#form-sorter").serialize();
+	        $.ajax({
+	            type: "POST",
+	            url: urltje,
+	            data: datastring,
+	            dataType: "html",
+	            success: function(data){
+	            	if(type == "movies") type = "films";
+	                $("#div-list-" + type).html(data);
+	            }
+	        }); 
+	        return false;
+		}
+		
+		function LoadList()
+	    {
+	        if(type == "series")
+	        {
+	            $(".div-list-series").load('/default/index/serieslist' + createAjaxUrl());
+	            
+	        }
+	        else if(type == "movies")
+	        {
+	            $(".div-list-films").load('/default/index/filmlist'+ createAjaxUrl());
+	            
+	        }
+	        else
+	        {
+	            
+	        }
+	    }
+	
+	});
+</script>
+
+<form id="form-sorter">
+    <div id="search_panel">
+    	<p class="title_panel" value="Search">Search</p>
+    	<div class="searchbox" id="search_box">
+    		<input type="text" placeholder="Search for..." id="search_textbox" name="search_textbox">
+    	</div>
+    </div>
+    
+    <div class="paneltje" id="franchises_panel">
+    	<p class="title_panel" value="Franchises"><i class="fa fa-caret-down"></i> Franchises</p>
+    	<div class="items" id="franchises_items">
+    		<?php if($this->ar_franchises != null) {
+    			foreach($this->ar_franchises as $franchise) {?>
+    				<label class="label_input"><input type="checkbox" name="franchise[]" value="<?php echo $franchise['id_franchise']; ?>" class="franchise_checkbox checkbox"><?php echo $franchise['fcs_title']; ?></label>
+    				
+    				
+    		<?php } } else {
+    			echo "<p>Nothing found</p>";
+    		}?>
+    	</div>
+    </div>
+    
+    <div class="paneltje" id="publishers_panel">
+    	<p class="title_panel" value="Publishers"><i class="fa fa-caret-down"></i> Publishers</p>
+    	<div class="items" id="publishers_items">
+    		<?php if($this->ar_publishers != null) {
+    			foreach($this->ar_publishers as $publisher) {?>
+    			<label class="label_input"><input type="checkbox" name="publisher[]" value="<?php echo $publisher['id_publisher']; ?>" class="publisher_checkbox checkbox"><?php echo $publisher['pbs_name']; ?></label>
+    			
+    		<?php } } else {
+    			echo "<p>Nothing found</p>";
+    		}?>
+    	</div>
+    </div>
+    
+    <div class="paneltje" id="producers_panel">
+    	<p class="title_panel" value="Producers"><i class="fa fa-caret-down"></i> Producers</p>
+    	<div class="items" id="producers_items">
+    		<?php if($this->ar_producers != null) 
+    		foreach($this->ar_producers as $producer) {?>
+    				<label class="label_input"><input type="checkbox" name="producer[]" value="<?php echo $producer['id_producer']; ?>" class="producer_checkbox checkbox"><?php echo $producer['pdr_name']; ?></label>
+    				
+    		<?php } else {
+    			echo "<p>Nothing found</p>";
+    		}?>
+    	</div>
+    </div>
+    
+    <div class="paneltje" id="genres_panel">
+    	<p class="title_panel" value="Genres"><i class="fa fa-caret-down"></i> Genres</p>
+    	<div class="items" id="genres_items">
+    		<?php if($this->ar_genres != null) {
+    			foreach($this->ar_genres as $genre) {?>
+    				<label class="label_input"><input type="checkbox" name="genre[]" value="<?php echo $genre['id_genre']; ?>" class="genre_checkbox checkbox"><?php echo $genre['gnr_name']; ?></label>
+    				
+    		<?php } } else {
+    			echo "<p>Nothing found</p>";
+    		}?>
+    	</div>
+    </div>
+    
+    <div class="paneltje" id="types_panel">
+    	<p class="title_panel" value="Types"><i class="fa fa-caret-down"></i> Types</p>
+    	<div class="items" id="types_items">
+    		<?php if($this->ar_filmserie_type != null) {
+    			foreach($this->ar_filmserie_type AS $filmserie_type) {?>
+    				<label class="label_input"><input type="checkbox" name="filmserie_type[]" value="<?php echo $filmserie_type['id_filmserie_type']; ?>" class="filmserie_type_checkbox checkbox"><?php echo $filmserie_type['fst_name']; ?></label>
+    				
+    			
+    		<?php } } else {
+    			echo "<p>Nothing found</p>";
+    		}?>
+    	</div>
+    </div>
+    
+    <div class="paneltje" id="subtitles_panel">
+    	<p class="title_panel" value="Subtitles" style="color: gray;"><i class="fa fa-caret-right"></i> Subtitles</p>
+    	<div class="items" style="display: none;" id="subtitles_items">
+    		<?php if($this->ar_subtitles != null) {
+    			foreach($this->ar_subtitles as $subtitle) {?>
+    				<label class="label_input"><input type="checkbox" name="subtitle[]" value="<?php echo $subtitle['id_language']; ?>" class="subtitle_checkbox checkbox"><?php echo $subtitle['lgg_name']; ?></label>
+    			
+    		<?php } } else {
+    			echo "<p>Nothing found</p>";
+    		}?>
+    	</div>
+    </div>
+    
+    <div class="paneltje" id="audio_panel">
+    	<p class="title_panel" value="Audio" style="color: gray;"><i class="fa fa-caret-right"></i> Audio</p>
+    	<div class="items" style="display: none;" id="audio_items">
+    		<?php if($this->ar_audio != null) {
+    			foreach($this->ar_audio as $audio) { ?>
+    				<label class="label_input"><input type="checkbox" name="audio[]" value="<?php echo $audio['id_language']; ?>" class="audio_checkbox checkbox"><?php echo $audio['lgg_name']; ?></label>
+    			
+    		<?php } } else {
+    			echo "<p>Nothing found</p>";
+    		}?>
+    	</div>
+    </div>
+</form>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata>
+	<navdefault>
+		<home>
+			<label>Home</label>
+			<module>default</module>
+			<controller>index</controller>
+			<action>index</action>
+			<pages>
+				<Animes>
+					<label>Animes</label>
+					<module>default</module>
+					<controller>animes</controller>
+					<action>animes</action>
+				</Animes>
+				<Statistics>
+					<label>Statistiek</label>
+					<module>customer</module>
+					<controller>statistics</controller>
+					<action>index</action>
+				</Statistics>
+				<Account>
+					<label>Mijn Instellingen</label>
+					<module>default</module>
+					<controller>auth</controller>
+					<action>changepassword</action>
+				</Account>
+				<Contact>
+					<label>Contact</label>
+					<module>customer</module>
+					<controller>index</controller>
+					<action>contact</action>
+				</Contact>
+				<Faq>
+					<label>FAQ</label>
+					<module>customer</module>
+					<controller>index</controller>
+					<action>faq</action>
+				</Faq>
+				<Logout>
+					<label>Afmelden</label>
+					<module>default</module>
+					<controller>auth</controller>
+					<action>logout</action>
+				</Logout>
+			</pages>
+		</home>
+	</navdefault>
+</configdata>

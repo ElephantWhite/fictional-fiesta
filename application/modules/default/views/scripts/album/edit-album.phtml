@@ -1,0 +1,39 @@
+<script>
+    $('#frm_edit').submit(function(e) {
+        e.preventDefault();
+        $.post({
+            url: <?php echo $this->url(array('action' =>'editalbum','controller' => 'Album')); ?>,
+            data:$('#frm_edit').serialize(),
+            success: function(){
+                //done
+            }
+        });
+    });
+</script>
+<?php echo "<a href='/album/index'>Index</a><br />"; ?>
+<form id="frm_edit">
+    <table>
+        <?php
+        foreach($this->ar_albums as $album): ?>
+        <tr>
+            <td><label for="txt_id">Editing:</label></td>
+            <td><input type="text" name="txt_id" id="txt_id" value="<?php echo $album['id']; ?>" readonly /></td>
+        </tr>
+        <tr>
+            <td><label for="txt_title">Edit title:</label></td>
+            <td><input type="text" id="txt_title" name="txt_title" value="<?php echo $album['title']; ?>" required /></td>
+        </tr>
+        <tr>
+            <td><label for="txt_artist">Edit Artist:</label></td>
+            <td><input type="text" id="txt_artist" name="txt_artist" value="<?php echo $album['artist']; ?>" required /></td>
+        </tr>
+        <tr>
+            <td><label for="txt_album_length">Album length</label></td>
+            <td><input type="text" id="txt_album_length" name="txt_album_length" value="<?php echo $album['AlbumMeta'][0]['album_length'] ?>" required /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="btn_submit" id="btn_submit" value="Edit"></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+</form>

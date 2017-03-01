@@ -1,0 +1,48 @@
+<style>
+	.quickview-serie-button{
+		width: 100%;
+		height: auto;
+	}
+	.serie{
+		margin-top: 1px;
+		border: 1px solid black;
+		width: 15%;
+		height: 45vh;
+		margin-left: 5%;
+	}
+	.serie-picture{
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+	}
+	
+	.serie h3{
+		margin-top: 2%;
+		text-align: center;
+		margin-bottom: 0;
+	}
+	
+	.serie-link
+	{
+		margin-left: auto;
+		margin-right: auto;
+		cursor: pointer;
+	}
+	.thumbnail{
+		margin-left: 5%
+	}
+</style>
+<?php
+foreach($this->ar_series AS $o_serie) {
+?>
+	<div class="thumbnail">
+		<img class="serie_link" style="height: 250px; width: auto;" class='film-picture' src="<?php echo "/images/series/" . $o_serie['srs_picture_url'] ?>" alt="Picture of a movie">
+		<div class="caption">
+			<h3><?php echo $o_serie['srs_title'];  ?></h3>
+			<input type='hidden' value=' <?php echo $o_serie['id_serie']; ?> '>
+			<p><a href="#" class="serie_link" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Quickview</a></p>
+		</div>
+	</div>
+<?php
+}
+?>

@@ -1,0 +1,65 @@
+<style>
+	.quickview-film-button
+	{
+		
+		width: 100%;
+		height: auto;
+	}
+	.film
+	{
+		margin-top: 1px;
+		border: 1px solid black;
+		width: 15%;
+		height: 45vh;
+		margin-left: 5%;
+	}
+	.film-picture
+	{
+		height: 100px; !important
+		width: auto;
+		
+		
+		margin-left: 0;
+	}
+	
+	.film h3
+	{
+		margin-top: 2%;
+		text-align: center;
+		margin-bottom: 0;
+	}
+	
+	.film-link
+	{
+		margin-left: auto;
+		margin-right: auto;
+		cursor: pointer;
+	}
+	.thumbnail
+	{
+    width: 180px;
+    height: 380px;
+    overflow: auto;
+    margin-left: 5%;
+	}
+	.caption h3
+	{
+		margin-top: 0;
+		font-size: 1.2em;
+	}
+</style>
+<?php
+
+foreach($this->ar_movies AS $o_film)
+{ ?>
+	<div class="thumbnail">
+		<img class="movie_link" style="height: 250px; width: auto;" class='film-picture' src="<?php echo "/images/films/" . $o_film['mvs_picture_url'] ?>" alt="Picture of a movie">
+		<div class="caption">
+        	<h3><?php echo $o_film['mvs_title'];  ?></h3>
+        	<input type='hidden' value=' <?php echo $o_film['id_movie']; ?> '>
+        	<p><a href="#" class="movie_link" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Quickview</a></p>
+      	</div>
+    </div>
+<?php
+}
+?>

@@ -1,0 +1,250 @@
+<?php echo  $this->doctype(); ?>
+<html>
+<head>
+    <title>Admin Area</title>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+    <?php 
+        $s_buildnumber = $this->buildNumber();
+        
+        //$this->loadSkin($this->baseUrl(), 'admin');
+        $this->jQuery()->setLocalPath($this->baseUrl().'/javascript/jquery/'.$this->getwebsitesettings($this->serverUrl(), 'jquery').'?'.$this->buildnumber());
+        $this->jQuery()->setUiLocalPath($this->baseUrl().'/javascript/jquery/'.$this->getwebsitesettings($this->serverUrl(), 'jquerythemejs').'?'.$this->buildnumber());
+    
+        //$this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/css/optimit/jquery-ui.css?'.$this->buildnumber());
+        //$this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/css/'.$this->getwebsitesettings($this->serverUrl(), 'jquerythemecss').'?'.$this->buildnumber());
+        
+        //$this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/css/optimit/bootstrap.css'.'?'.$this->buildnumber());
+        $this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/extra/datatables/css/jquery.dataTables.css'.'?'.$this->buildnumber());
+        //$this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/extra/datatables/css/dataTables.bootstrap.min.css'.'?'.$this->buildnumber());
+        $this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/extra/validation/validationEngine.jquery.css'.'?'.$this->buildnumber());
+        $this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/extra/languageswitcher/jquery.languageswitcher.css'.'?'.$this->buildnumber());
+        $this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/extra/chosen/chosen.min.css'.'?'.$this->buildnumber());
+        $this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/extra/datetimepicker/jquery.datetimepicker.css'.'?'.$this->buildnumber());
+        $this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/extra/switchbutton/jquery.switchbutton.css'.'?'.$this->buildnumber());
+        $this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/extra/fileupload/jquery.fileupload.css'.'?'.$this->buildnumber());
+        $this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/extra/fileupload/jquery.fileupload-ui.css'.'?'.$this->buildnumber());
+        $this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/extra/fileupload/gallery.css'.'?'.$this->buildnumber());
+        
+        //$this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/extra/bootstrapmenu/bootstrapmenu.css'.'?'.$this->buildnumber());
+        
+        //$this->jQuery()->addStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+                
+        
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/datatables/js/jquery.dataTables.min.js?'.$this->buildnumber());
+        //$this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/datatables/js/dataTables.jqueryui.min.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/validation/jquery.validationEngine.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/validation/jquery.validationEngine-nl.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/languageswitcher/jquery.languageswitcher.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/chosen/chosen.jquery.min.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/datetimepicker/jquery.datetimepicker.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/verticalnavigation/jquery.ssd-vertical-navigation.min.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/switchbutton/jquery.switchbutton.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/noty/packaged/jquery.noty.packaged.js?'.$this->buildnumber());
+        
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/tmpl.min.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/load-image-all.min.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/resize.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/gallery.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/catcomplete/catcomplete.js?'.$this->buildnumber());
+        
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/jquery.iframe-transport.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/jquery.fileupload.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/jquery.fileupload-process.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/jquery.fileupload-image.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/jquery.fileupload-audio.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/jquery.fileupload-video.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/jquery.fileupload-validate.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/jquery.fileupload-ui.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/fileupload/jquery.fileupload-jquery-ui.js?'.$this->buildnumber());
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/js/imagelightbox.js?'.$this->buildnumber());
+        
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/jquery/extra/countlines/countlines.js?'.$this->buildnumber());
+        
+        $this->jquery()->addJavascriptFile($this->baseUrl().'/javascript/tinymce/tinymce.min.js?'.$this->buildnumber());
+        $this->jQuery()->addStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+		$this->jQuery()->addStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+		//$this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/css/'.$this->getwebsitesettings($this->serverUrl(), 'micheljonk').'?'.$this->buildnumber());
+    	$this->jQuery()->addStylesheet('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css');
+        $this->jQuery()->enable();
+        $this->jQuery()->uiEnable();
+        echo $this->jQuery();
+        $countTableHelper = $this->getHelper('CountTables');
+    ?>
+    	<script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://raw.githubusercontent.com/dreyescat/bootstrap-rating/master/bootstrap-rating.min.js"></script>
+</head>
+
+<body>
+<style>
+	.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+.ui-autocomplete-category {
+	    	font-weight: bold;
+	    	padding: .2em .4em;
+	    	margin: .8em 0 .2em;
+	    	line-height: 1.5;
+	  	}
+</style>
+<script>
+$(document).ready(function(){
+  	
+  	 $.widget( "custom.catcomplete", $.ui.autocomplete, {
+    _create: function() {
+      this._super();
+      this.widget().menu( "option", "items", "> :not(.ui-autocomplete-category)" );
+    },
+    _renderMenu: function( ul, items ) {
+      var that = this,
+        currentCategory = "";
+      $.each( items, function( index, item ) {
+        var li;
+        if ( item.category != currentCategory ) {
+          ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>" );
+          currentCategory = item.category;
+        }
+        li = that._renderItemData( ul, item );
+        if ( item.category ) {
+          li.attr( "aria-label", item.category + " : " + item.label );
+        }
+      });
+    }
+  });
+ 
+ 
+    $( "#search" ).catcomplete({
+      delay: 0,
+      source: "/admin/index/getsearchbox",
+		select: function (event, ui) { redirectToPage(ui.item.category, ui.item.id); }
+    });
+  });
+	
+</script>
+
+
+
+<nav class="na vbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button class="navbar-toggle collapsed" aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Admin</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="#">Settings</a>
+				</li>
+				<li>
+					<a href="#">Profile</a>
+				</li>
+			</ul>
+			<form class="navbar-form navbar-right">
+			<input id="search" class="form-control" type="text" placeholder="Search..." aria-describedby="sizing-addon2">
+			</form>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li <?php if($this->ControllerName() == "dashboard"){ ?> class="active" <?php } ?>><a href="/admin/dashboard">Dashboard</a></li>
+            <li <?php if($this->ControllerName() == "films"){ ?> class="active" <?php } ?>><a href="/admin/films">Films  <span class="badge pull-right"><?php echo $countTableHelper->countfilms(); ?> </span></a></li>
+            <li <?php if($this->ControllerName() == "series"){ ?> class="active" <?php } ?>><a href="/admin/series">Series  <span class="badge pull-right"><?php echo $countTableHelper->countseries(); ?> </span></a></li>
+            <li <?php if($this->ControllerName() == "franchises"){ ?> class="active" <?php } ?>><a href="/admin/franchises">Franchises  <span class="badge pull-right"><?php echo $countTableHelper->countfranchises(); ?> </span></a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li <?php if($this->ControllerName() == "characters"){ ?> class="active" <?php } ?>><a href="/admin/characters">Characters  <span class="badge pull-right"><?php echo $countTableHelper->countcharacters(); ?> </span></a></li>
+            <li <?php if($this->ControllerName() == "types"){ ?> class="active" <?php } ?>><a href="/admin/types">Types  <span class="badge pull-right"><?php echo $countTableHelper->counttypes(); ?> </span></a></li>
+            <li <?php if($this->ControllerName() == "genres"){ ?> class="active" <?php } ?>><a href="/admin/genres">Genres  <span class="badge pull-right"><?php echo $countTableHelper->countgenres(); ?> </span></a></li>
+            <li <?php if($this->ControllerName() == "publishers"){ ?> class="active" <?php } ?>><a href="/admin/publishers">Publishers  <span class="badge pull-right"><?php echo $countTableHelper->countpublishers(); ?> </span></a></li>
+            <li <?php if($this->ControllerName() == "producers"){ ?> class="active" <?php } ?>><a href="/admin/producers">Producers  <span class="badge pull-right"><?php echo $countTableHelper->countproducers(); ?> </span></a></li>
+            <li <?php if($this->ControllerName() == "languages"){ ?> class="active" <?php } ?>><a href="/admin/languages">Languages  <span class="badge pull-right"><?php echo $countTableHelper->countlanguages(); ?> </span></a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li <?php if($this->ControllerName() == "users"){ ?> class="active" <?php } ?>><a href="/admin/users">User Management  <span class="badge pull-right"><?php echo $countTableHelper->countusers(); ?> </span></a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        		<?php echo $this->layout()->content; ?>
+        </div>
+      </div>
+    </div>              
+</body>
+</html>

@@ -1,0 +1,9 @@
+# cache images for 1 month, do not require revalidation
+<FilesMatch "\.(gif|jpe?g|png|flv|swf|ico)$">
+Header set Cache-Control: "max-age=1296000 public "
+</FilesMatch>
+#
+# cache scripts, css, and documents for 1 week, do not require revalidation
+<FilesMatch "\.(js|css|pdf)$">
+Header set Cache-Control: "max-age=604800 public "
+</FilesMatch>

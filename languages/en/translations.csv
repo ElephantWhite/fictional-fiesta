@@ -1,0 +1,69 @@
+Welkom;Welkom222
+File Uploaded;Bestand geupload
+Signal;Signaal
+signaltype;Signaal type
+signalsource;Bron
+signaldt;Ingelezen
+signalinfo;Signaal informatie
+companyid;Bedrijfs nr.
+companyname;Bedrijfsnaam
+personid;Persoons nr.
+prsfirstname;Voornaam
+prsinitials;Initialen
+prsmiddlename;Doopnaam
+prsname;Achternaam
+prsnickname;Roepnaam
+prsinfix;Tussenvoegsel
+prsgender;Geslacht
+prsbirthday;Geboortedatum
+prsdeceasedday;Overlijdingsdatum
+prstitle;Titel
+empstartdt;Startdatum
+empenddt;Einddatum
+emppercentage;Percentage
+bsn;BSN
+wpcworktitle;Werktitel
+wpcworkfunction;Functie
+wpcactiveperc;Actief
+wpcstartdt;Startdatum
+wpcenddt;Einddatum
+depexternid;Afdelings nr.
+emtstartdt;Startdatum
+emtenddt;Einddatum
+emtfte;FTE
+employment;Contract
+employee;Werknemer
+idaddresstype;Adrestype
+addaddressrow1;Adresregel 1
+addaddressrow2;Adresregel 2
+addaddressrow3;Adresregel 3
+number;Nummer
+numberaddition;Toevoeging
+addzip;Postcode
+addcity;Stad
+addgeocode;Geocode
+addregion;Regio
+addarea;Gebied
+addcommunity;Gemeente
+addcntcd;Land
+addsecrecylevel;Zichtbaarheid
+addstartdt;Startdatum
+addenddt;Einddatum
+cnmtype;Contacttype
+idcontactmediumtype;Contactmediumtype
+cnmcontact;Contact
+contactmedium;Contact
+contactmediums;Contacten
+address;Adres
+addresses;Adressen
+handlingplan;Verzuimgeval
+handlingplanid;Verzuimgeval nr.
+hpnstart;Eerste verzuimdag
+hpnend;Einde verzuimgeval
+hpnname;Naam
+hpnnamelong;Naam (lang)
+pregnancy;Zwanger
+regress;Regress
+accident;Ongeluk
+percentage;Verzuimpercentage
+comment;Opmerking

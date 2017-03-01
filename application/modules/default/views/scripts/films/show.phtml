@@ -1,0 +1,192 @@
+<style>
+	#title
+	{
+		color: #2C3E50;
+	}
+
+	#picture{
+		width: 100%; height: auto;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#left{
+		float: left;
+		width: 20%;
+		margin-right: 3%;
+		border-left: 1px solid black;
+		border-right: 1px solid black;
+		border-bottom: 1px solid black;
+		box-shadow: 0px 4px 10px #888888;
+	}
+	
+	#right{
+		float:right;
+		width: 76%;
+	}
+	
+	#external_links
+	{
+		width:100%;
+		display: inline;
+		height: auto;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	
+	#imdb_link{
+		margin-left: 5%;
+		margin-right: 5%;
+		width: 45%;
+	}
+	
+	#rottentomatoes_link
+	{
+		width: 40%;
+		margin-top: auto;
+		margin-bottom: 2%;
+	}
+	#info_panel
+	{
+		margin-left: 5px;
+	}
+
+	#audio_languages, #subtitle_languages{
+		display: none;
+	}
+	
+	#toggleAudio, #toggleSubtitle
+	{
+		cursor: pointer;
+	}
+	
+	.character{
+		border-bottom: 1px solid black;
+		/*border-top: 1px solid black;*/
+		padding-left: 2%;
+	}
+	
+	.character_name{
+		margin-top: 2%;
+		margin-bottom: 0;
+		font-size: 2em;
+	}
+	
+	.character_description{
+		margin-left: 2%;
+		margin-top: 1%;
+	}
+</style>
+<?php
+	$o_movie = $this->o_movie;
+	$o_publishers_movies = $this->o_publishers_movies;
+	$o_producers_movies = $this->o_producers_movies;
+	$o_genres_movies = $this->o_genres_movies;
+	$o_characters_movies = $this->o_characters_movies;
+	$o_subtitles_movies = $this->o_subtitles_movies;
+	$o_audio_movies = $this->o_audio_movies;
+	if($o_movie != null){
+?>
+<script type="text/javascript">
+	$(document).ready(function(){
+		loadFilmReviews();
+		
+		function loadFilmReviews()
+		{
+			$("#reviewBoxM<?php echo $this->o_movie['id_movie'];?>").load("/default/reviews/show/idmovie/<?php echo $o_movie['id_movie']; ?>");
+		}
+		
+		$(document).on("click", "#toggleAudio", function(){
+			$("#audio_languages").toggle();
+			if($("#audio_languages").css("display") == "none")
+			{
+				
+				$("#toggleAudio").html("▼ Show Audio");
+			}
+			else
+			{
+				$("#toggleAudio").html("▲ Hide Audio");
+			}
+			
+		});
+		
+		$(document).on("click", "#toggleSubtitle", function(){
+			$("#subtitle_languages").toggle();
+			if($("#subtitle_languages").css("display") == "none")
+			{
+				
+				$("#toggleSubtitle").html("▼ Show Subtitles");
+			}
+			else
+			{
+				$("#toggleSubtitle").html("▲ Hide Subtitles");
+			}
+		});
+	});
+</script>
+
+<div id="left">
+	<img id="picture" alt="Plaatje van film: <?php echo $o_movie['mvs_title']; ?>"src='/images/films/<?php echo $o_movie['mvs_picture_url'] ?>'>
+		<hr>
+	<div id="info_panel">
+		
+		<h3>Information</h3>
+		<p id="franchise"><b>Franchise: </b> <?php echo $o_movie['Franchises']['fcs_title']; ?></p>
+		<p id="publishers"><b>Publishers:</b> <?php foreach($o_publishers_movies AS $item){ echo $item['Publishers']['pbs_name'] . ", ";} ?></p>
+		<p id="producers"><b>Producers:</b> <?php foreach($o_producers_movies AS $item) { echo $item['Producers']['pdr_name'] . ", ";} ?></p>
+		<p id="genres"><b>Genres:</b> <?php foreach($o_genres_movies AS $item){ echo $item['Genres']['gnr_name'] . ", ";}?></p>
+		<p id="type"><b>Type:</b> <?php echo $o_movie['FilmserieType']['fst_name']; ?></p>
+		<p id="releasedate"><b>Release Date: </b> <?php echo $o_movie['mvs_date']; ?></p>
+		<h3>Audio and subtitles</h3>
+		<p id="toggleAudio">▼ Show Audio</p>
+		<div id="audio_languages">
+			<ul>
+			<?php foreach($o_audio_movies AS $item)
+			{
+				echo "<li>" . $item['Languages']['lgg_name'] . "</li>";
+			} ?>
+			</ul>
+		</div>
+		<p id="toggleSubtitle">▼ Show Subtitles</p>
+		<div id="subtitle_languages">
+			<ul>
+			<?php foreach($o_subtitles_movies AS $item)
+			{
+				echo "<li>" . $item['Languages']['lgg_name'] . "</li>";
+			} ?>
+			</ul>
+		</div>
+		<h3>External Links</h3>
+		<div id="external_links">
+			<a href="<?php echo $o_movie['mvs_imdb_link']; ?>"><img alt="IMDB logo" id="imdb_link" src="/images/external_links/imdb.png"></a>
+			<a href="<?php echo $o_movie['mvs_rottentomatoes_link']; ?>"><img alt="Het RottenTomatoes logo" id="rottentomatoes_link" src="/images/external_links/rottentomatoes.png"></a>
+		</div>
+	</div>
+
+</div>
+<div id='right'>
+	<div id="main_info">
+		<h1 id="title"><?php echo $o_movie['mvs_title']; ?></h1>
+		<p id="description"><?php echo $o_movie['mvs_description']; ?></p>
+	</div>
+
+	<h2>Characters</h2>
+	<div id="character_list">
+		<?php
+		foreach($o_characters_movies AS $item){ ?>
+		<div class="character">
+			<p class="character_name"> <?php echo $item['Characters']['chr_name']; ?></p>
+			<p class="character_description"> <?php echo $item['Characters']['chr_description']; ?></p>
+		</div>
+		<?php } ?>
+	</div>
+	
+	<div class="reviewBox" id="reviewBoxM<?php echo $o_movie['id_movie'];?>">
+	</div>
+</div>
+
+<?php }else
+	{
+		echo "<h1>It looks like this movie wasn't a great hit.</h1>";
+		echo "<p>This page has been deleted or did never exist</p>";
+	} ?>

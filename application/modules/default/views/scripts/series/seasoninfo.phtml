@@ -1,0 +1,122 @@
+<style>
+	.episodes
+	{
+		padding: 2%;
+		background-color: #617487;
+		margin-bottom: 0;
+	}
+	
+	.episode{
+		font-size: 1.2em;
+		border-bottom: 1px #B7BFC7 solid;
+		font-weight: bold;
+		color: #1C3650;
+		margin-top: 1.5%;
+		margin-bottom: 1.5%;
+		cursor: pointer;
+
+	}
+	
+	.episode_id, .episode_title, .episode_date
+	{
+		display: inline;
+	}
+	
+	.episode_id
+	{
+		margin-right: 1%;
+	}
+	
+	.episodes_text, .characters_text, .description_text
+	{
+		margin-top: 0;
+		color: #ECF0F1;
+	}
+	
+	.characters_season
+	{
+		padding: 2%;
+		margin-bottom: 0;
+		background-color: #445B72;
+	}
+	
+	.character{
+		font-size: 1.2em;
+		border-bottom: 1px #B7BFC7 solid;
+		font-weight: bold;
+		color: #0C2238;
+		margin-top: 1.5%;
+		margin-bottom: 0;
+	}
+	
+	.reviewBox{
+		padding: 2%;
+		background-color: #617487;
+		margin-bottom: 1.5%;
+	}
+	
+</style>
+
+<?php if( $this->ar_episodes != null)
+{ ?>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		loadSeasonReviews();
+		
+		function loadSeasonReviews()
+		{
+			$("#reviewBoxS<?php echo $this->o_season['id_season'];?>").load("/default/reviews/show/idserie/" + $('#serie_id').attr("value") + "/idseason/<?php echo $this->o_season['id_season']; ?>");
+		}
+		
+	});
+</script>
+
+<div class="episodes">
+	<p class="description_text">Description</p>
+	<p class="season_description"> <?php echo $this->o_season['sss_description']; ?></p>
+	<h2 class="episodes_text">Episodes</h2>
+	
+	<?php
+		$count = 0;
+		foreach($this->ar_episodes AS $o_episode)
+		{ $count = $count + 1; ?>
+			
+		<div class='episode'>
+			<p class="episode_id"><?php echo "Ep. " . $count; ?></p>
+			<p class="episode_title"><?php echo $o_episode['epd_title'];  ?> </p>
+			<p class="episode_date"><?php echo $o_episode['epd_date']; ?></p>
+			<input class="id_episode" type='hidden' value='<?php echo $o_episode['id_episode']; ?>'>
+			<input type='hidden' value='<?php echo $this->o_season['id_season']; ?>'>
+		</div>
+			
+			
+	<?php
+		}
+	?>
+</div>
+<div class="characters_season">
+	<h2 class="characters_text"><i class="fa fa-users"></i> Characters</h2>
+	<?php foreach($this->ar_characters AS $o_character ) {?>
+		
+	<div class="character">
+		<p class="character_name"><?php echo $o_character['Characters']['chr_name']; ?></p>
+		<input type='hidden' value=' <?php echo $o_character['Characters']['id_character']; ?> '>
+	</div>
+	
+	<?php } ?>
+</div>
+
+<div class="reviewBox" id="reviewBoxS<?php echo $this->o_season['id_season'];?>">
+	
+</div>
+
+<?php } else { ?>
+	
+	<p>This season cannot be found.</p>
+	
+<?php }?>
+
+
+

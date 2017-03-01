@@ -1,0 +1,130 @@
+<?php 
+//BEGIN HET PAD ZONDER '/' EN EINDIG ALTIJD MET '/'
+
+ini_set('memory_limit','2048M');
+ini_set('max_execution_time', 99999999);
+
+if(isset($_POST['submit'])){
+	if(isset($_POST['from']) && isset($_POST['to'])){
+		optimizeImages($_POST['from'], $_POST['to']);
+	}
+}
+
+
+function optimizeImages($location, $optimized_location){
+	$report_path = $_SERVER['DOCUMENT_ROOT'] . '/' . $optimized_location . "report.txt";
+	fopen($report_path, "w");
+	
+	file_put_contents($report_path, "BEGONNEN OP: " . date("D M j G:i:s T Y") .  "\n", FILE_APPEND);
+	
+	$aantal_pngs = 0;
+	$aantal_jpegs = 0;
+	$paths = array();
+	$di = new RecursiveDirectoryIterator($_SERVER['DOCUMENT_ROOT'] . "/" . $location, RecursiveDirectoryIterator::SKIP_DOTS);
+	foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
+	    if (!in_array(dirname($file), $paths) && is_dir((dirname($file)))) {
+			$paths[] = dirname($file);
+		}
+		
+	    $img = new Imagick(); 
+		if(is_image($file)){
+		   $img->readImage($file); 
+		   if(pathinfo($file, PATHINFO_EXTENSION) == "JPG" || pathinfo($file, PATHINFO_EXTENSION) == "JPEG" || pathinfo($file, PATHINFO_EXTENSION) == "jpg" || pathinfo($file, PATHINFO_EXTENSION) == "jpeg"){
+				$img->setImageCompression(imagick::COMPRESSION_JPEG);
+			   	$img->setImageCompressionQuality(80);
+				
+				$geo = $img->getImageGeometry();
+		   		
+				if($geo['width'] > 1920 && $geo['height'] > 1080){
+					$img->resizeImage("1920", "1080", 22, 1, true);
+				}
+				$aantal_jpegs = $aantal_jpegs + 1;
+				file_put_contents($report_path, $img->getImageFileName() . "\n", FILE_APPEND);
+				file_put_contents($report_path, "Oude grootte: " . $img->getImageLength() . " bytes" . "\n", FILE_APPEND);
+				
+				$filelocation = $img->getImageFileName();
+				$filelocation = str_replace($_SERVER['DOCUMENT_ROOT'], "", $filelocation);
+				$filelocation = str_replace($location, $optimized_location, $filelocation);
+				
+				createFolders($_SERVER['DOCUMENT_ROOT'] . $filelocation);
+				$img->stripImage();
+				$img->writeImage($_SERVER['DOCUMENT_ROOT'] . $filelocation);
+				
+				$imgnew = new Imagick(); 
+				$imgnew->readImage($_SERVER['DOCUMENT_ROOT'] . $filelocation);
+				
+				file_put_contents($report_path, "Nieuwe grootte: " . $imgnew->getImageLength() . " bytes" . "\n \n", FILE_APPEND);
+		   } else if(pathinfo($file, PATHINFO_EXTENSION) == "PNG" || pathinfo($file, PATHINFO_EXTENSION) ==  "png"){
+		   		$img->setImageFormat("png");
+				$img->setImageCompressionQuality(80);
+				$geo = $img->getImageGeometry();
+				if($geo['width'] > 1920 && $geo['height'] > 1080){
+					$img->resizeImage("1920", "1080", 22, 1, true);
+				}
+				
+				$aantal_pngs = $aantal_pngs + 1;
+				file_put_contents($report_path, $img->getImageFileName() . "\n", FILE_APPEND);
+				file_put_contents($report_path, "Oude grootte: " . $img->getImageLength() . " bytes" . "\n", FILE_APPEND);
+				
+				$filelocation = $img->getImageFileName();
+				$filelocation = str_replace($_SERVER['DOCUMENT_ROOT'], "", $filelocation);
+				$filelocation = str_replace($location, $optimized_location, $filelocation);
+				
+				createFolders($_SERVER['DOCUMENT_ROOT'] . $filelocation);
+				$img->stripImage();
+				$img->writeImage($_SERVER['DOCUMENT_ROOT'] . $filelocation);
+				
+				$imgnew = new Imagick(); 
+				$imgnew->readImage($_SERVER['DOCUMENT_ROOT'] . $filelocation);
+				file_put_contents($report_path, "Nieuwe grootte: " . $imgnew->getImageLength() . " bytes" . "\n \n", FILE_APPEND);
+		   }
+		}
+	  
+	}
+	file_put_contents($report_path, "KLAAR OP: " . date("D M j G:i:s T Y") .  "\n", FILE_APPEND);
+	file_put_contents($report_path, "Aantal jpegs: ". $aantal_jpegs .  "\n", FILE_APPEND);
+	file_put_contents($report_path, "Aantal pngs: " . $aantal_pngs .  "\n", FILE_APPEND);
+	file_put_contents($report_path, "Aantal mappen: " . count($paths) .  "(inclusief hoofdmap) \n", FILE_APPEND);
+	echo "KLAAR, meer informatie is te zien in de nieuwe folder" . "<br/>";
+	echo "Aantal jpegs: " . $aantal_jpegs . "<br/>";
+	echo "Aantal pngs: " . $aantal_pngs . "<br/>";
+	echo "Aantal mappen: " . count($paths) . "(inclusief hoofdmap)<br/>";
+}
+
+
+function is_image($path)
+{
+    $a = getimagesize($path);
+    $image_type = $a[2];
+     
+    if(in_array($image_type , array(IMAGETYPE_GIF , IMAGETYPE_JPEG ,IMAGETYPE_PNG , IMAGETYPE_BMP)))
+    {
+        return true;
+    }
+    return false;
+}
+
+
+function createFolders($filepath){
+	if(!file_exists(dirname($filepath))){
+		mkdir(dirname($filepath), 0755, true);
+	}
+}
+
+?>
+<html>
+	<head>
+		<title>Image Compressor</title>
+	</head>
+	<body>
+		<form method="POST" name="">
+			<h1>Verkleinen en overzetten van afbeeldingen</h1>
+			<p>Het pad moet vanaf de server root beginnen. <br/>BEGIN HET PAD ZONDER '/' EN EINDIG ALTIJD MET '/' <br/>
+				bijv: 'pad/naar/een/folder/
+			</p>
+			<label for="from">Van: <input type="text" name="from" id="from"/></label><br/>
+			<label for="to">Naar: <input type="text" name="to" id="to/>"</label>
+			<input type="submit" name="submit" value="Overzetten">
+		</form>
+	</body>
+</html>

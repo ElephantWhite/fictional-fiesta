@@ -1,0 +1,270 @@
+<style>
+	.review
+	{
+		border-bottom: 1px solid white;
+	}
+
+	.reviews_list
+	{
+		border-top: 1px solid white;
+		background-color: #617487;
+	}
+
+	.review_title
+	{
+		color: white;
+		font-size: 2em;
+		display: inline;
+		margin-left: 1%;
+	}
+	
+	
+	.review_grade, .average_grade
+	{
+		display: inline;
+		font-size: 3em;
+		color: white;
+		margin-top: 1%;
+	}
+	
+	.average_grade
+	{
+		padding-left: 2%;
+		padding-right: 2%;
+		margin-left: -2%;
+		margin-top: -2%;
+		background-color: #0A2338;
+	}
+	
+	.review_content
+	{
+		margin-left: 4%;
+	}
+</style>
+<?php
+	$all_review_id = null;
+	$load_url = null;
+	if($this->review_type == "episodes")
+	{
+		$all_review_id = "reviews_SR" . $this->review_id_serie . "S" . $this->review_id_season . "E" . $this->review_id_episode;
+		$load_url = "/default/reviews/show/idserie/" . $this->review_id_serie . "/idseason/" . $this->review_id_season . "/idepisode/" . $this->review_id_episode;
+	} else if($this->review_type == "seasons")
+	{
+		$all_review_id = "reviews_SR" . $this->review_id_serie . "S" . $this->review_id_season;
+		$load_url = "/default/reviews/show/idserie/" . $this->review_id_serie . "/idseason/" . $this->review_id_season;
+	} else if($this->review_type == "movies")
+	{
+		$all_review_id = "reviews_M" . $this->review_id_movie;
+		$load_url = "/default/reviews/show/idmovie/" . $this->review_id_movie;
+	}
+	?>
+	
+<?php
+	if($this->dialog == 0) {
+?>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.rating').rating();
+		$(document).off('click', '#dialog_show_more_<?php echo $all_review_id; ?>');
+		$(document).off('click', "#show_all_<?php echo $all_review_id; ?>");
+		$(document).off('click', "#post_review_<?php echo $all_review_id; ?>");
+		
+		var viewportWidth 	= 	window.innerWidth	-	20;
+		var viewportHeight 	= 	window.innerHeight	-	50;
+		if (viewportWidth > 1000) viewportWidth 	= 	1000;
+		if (viewportHeight > 500) viewportHeight 	= 	500;
+		
+		var offset_<?php echo $all_review_id ?> 	= 	10;
+		$("#reviews_list_<?php echo $all_review_id; ?>").css("max-height", (viewportHeight - 70));
+		$("#reviews_list_<?php echo $all_review_id; ?>").css("min-height", (viewportHeight - 70));
+		
+		$(document).on("click", "#dialog_show_more_<?php echo $all_review_id; ?>", function(){
+			
+				$("#reviews_list_<?php echo $all_review_id; ?>").append($("<div>").load("<?php echo $load_url . "/dialog/1/offset/"; ?>" + offset_<?php echo $all_review_id ?>));
+    			offset_<?php echo $all_review_id ?> = offset_<?php echo $all_review_id ?> + 10;
+	
+		});
+		
+		
+		
+		$(document).on("click", "#show_all_<?php echo $all_review_id; ?>", function(){
+			offset_<?php echo $all_review_id ?> = 10;
+			$("#dialog_content_<?php echo $all_review_id; ?>").find(".reviews_list").load("<?php echo $load_url . "/dialog/1"; ?>");
+			$("#dialog_show_<?php echo $all_review_id; ?>").dialog('open');
+		});
+		
+		
+		$("#dialog_show_<?php echo $all_review_id; ?>").dialog({
+			height:		viewportHeight,
+			maxHeight:	viewportHeight,
+			width:		viewportWidth,
+			autoOpen:	false,
+			modal:		true,
+			resizable:	false,
+			position: {
+				my: "center center",
+				at: "center center",
+				of: window,
+				collision: "none"
+			},
+			create: function (event, ui) {
+				$(event.target).parent().css('position', 'fixed');
+			}
+		});
+		
+		function getReviewForm(id)
+		{
+			datastring = $("#make_review_" + id).serialize();
+	        $.ajax({
+	            type: "POST",
+	            url: "/default/reviews/post",
+	            data: datastring,
+	            dataType: "html",
+	            success: function(data){
+	            	$("#myModal_" + id).modal('hide');
+	            }
+	        }); 
+	        return false;
+		}
+		
+		$("#post_review_<?php echo $all_review_id; ?>").on("click", function(){
+			
+			$("#make_review_<?php echo $all_review_id; ?>").validate({
+				ignore: ".ignore",
+				  rules: {
+				    // simple rule, converted to {required:true}
+				    title: "required",
+				    // compound rule
+				    email: "required"
+				    
+				    }
+			});
+			
+			if($("#make_review_<?php echo $all_review_id; ?>").valid())
+				{
+					if($("#rating_<?php echo $all_review_id; ?>").val() != '')
+					{
+						getReviewForm("<?php echo $all_review_id; ?>");
+					}
+				}
+		});
+		
+	});
+</script>
+<?php if($this->ar_reviews != null) { ?>
+<div class="reviews_summary">
+	<?php 
+	$average = 0;
+	foreach($this->ar_reviews as $review)
+	{
+		$average = $average + $review['rvw_grade'];
+	} 
+	$average = $average / count($this->ar_reviews);
+	?>
+	
+	<p class="average_grade"><?php echo $average;?><span style="font-size: 0.5em;">/10 : <?php echo count($this->ar_reviews); ?> votes</span></p>
+</div>
+
+<?php } ?>
+
+<h2><i class="fa fa-star-half-o"></i> Reviews</h2>
+
+<?php if($this->CheckLogin() && !$this->CheckReviewExists($_SESSION['user'][0]['id_user'], array("id_serie" => $this->review_id_serie, "id_season" => $this->review_id_season, "id_episode" => $this->review_id_episode, "id_movie" => $this->review_id_movie))) {?>
+	
+<button type="button" style="margin-bottom: 2%" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal_<?php echo $all_review_id;?>">
+  Write review
+</button>
+
+<?php } else if(!$this->CheckLogin()) {?>
+	<h4>You have to be logged in to comment</h4>
+	<?php } ?>
+
+<?php if($this->ar_reviews != null) { ?>
+<div class="reviews_list">
+	
+	<?php foreach($this->ar_reviews as $review)
+	{ ?>
+		
+		<div class="review">
+			<p class="review_grade"><?php echo $review['rvw_grade']; ?><span style="font-size: 0.5em;">/10</span></p>
+			<p class="review_title"><?php echo $review['rvw_title']; ?></p>
+			<p class="review_content"><?php echo $review['rvw_content']; ?></p>
+			
+		</div>
+		
+	<?php } 
+	
+	
+	?>
+	<p class="show_all_reviews" id="show_all_<?php echo $all_review_id; ?>">Show All</p>
+</div>
+<?php } ?>
+<div id="dialog_show_<?php echo $all_review_id; ?>">
+	<div id="dialog_content_<?php echo $all_review_id; ?>">
+		<div style="overflow: scroll !important; overflow-x: hidden !important" class="reviews_list" id="reviews_list_<?php echo $all_review_id; ?>">
+			
+		</div>
+	</div>
+	<button id="dialog_show_more_<?php echo $all_review_id; ?>">Load More</button>
+</div>
+<form id="make_review_<?php echo $all_review_id; ?>">
+<div class="modal fade" id="myModal_<?php echo $all_review_id;?>" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Write a review</h4>
+      </div>
+      <div class="modal-body">
+        <div id="review">
+				<input class="ignore" type="hidden" name="id_serie" value="<?php echo $this->review_id_serie; ?>">
+				<input class="ignore" type="hidden" name="id_season" value="<?php echo $this->review_id_season; ?>">
+				<input class="ignore" type="hidden" name="id_episode" value="<?php echo $this->review_id_episode; ?>">
+				<input class="ignore" type="hidden" name="id_movie" value="<?php echo $this->review_id_movie; ?>">
+		  		<div class="input-group">
+		    		<div class="input-group-addon">Title</div>
+		    			<input name="title" type="text" class="form-control" id="title_review_input" required>
+		  		</div>
+		  		<div class="input-group">
+		    		<textarea required name="content" class="form-control" id="password_input" placeholder="Content" style="resize: none; margin-top: 2%; width: 40.5em"></textarea>
+		  		</div>
+		  		
+		  		<input name="rating" id="rating_<?php echo $all_review_id; ?>" type="hidden" class="ignore rating" style="color: gold;" data-filled="fa fa-star fa-3x" data-empty="fa fa-star-o fa-3x" data-fractions="2" data-stop="10" data-step="2"/>
+		  		<span class="label label-default">Rating: </span>
+		  			<!--<div class="alert alert-danger alert-dismissible" role="alert">
+		  			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+		  		
+			
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="post_review_<?php echo $all_review_id; ?>" name="post_review" class="btn btn-primary">Post review</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</form>
+<?php } else if($this->dialog == 1) { ?>
+
+	<?php foreach($this->ar_reviews as $review)
+	{ ?>
+		
+		<div class="review">
+			<p class="review_grade"><?php echo $review['rvw_grade']; ?><span style="font-size: 0.5em;">/10</span></p>
+			<p class="review_title"><?php echo $review['rvw_title']; ?></p>
+			<p class="review_content"><?php echo $review['rvw_content']; ?></p>
+			
+		</div>
+		
+	<?php } 
+	
+	
+	?>
+
+<?php } ?>
+
+
+
+
+

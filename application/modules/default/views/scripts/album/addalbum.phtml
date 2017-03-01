@@ -1,0 +1,35 @@
+<script>
+    $('#frm_add').submit(function(e) {
+        e.preventDefault();
+        $.post({
+           url: <?php echo $this->url(array('action' =>'addalbum','controller' => 'Album')); ?>,
+            data:$('#frm_add').serialize(),
+            success: function(){
+                //done
+            }
+        });
+    });
+</script>
+<?php echo "<a href='/album/index'>Index</a><br />"; ?>
+<form id="frm_add">
+    <fieldset>
+        <legend>Add new album</legend>
+        <table>
+            <tr>
+                <td><input required type="text" name="txt_title" id="txt_title" /></td>
+                <td><label for="txt_title">Album name</label> </td>
+            </tr>
+            <tr>
+                <td><input required type="text" name="txt_artist" id="txt_artist" /></td>
+                <td><label for="txt_artist">Album artist</label> </td>
+            </tr>
+            <tr>
+                <td><input required type="text" name="txt_album_length" id="txt_album_length" /></td>
+                <td><label for="txt_album_length">Album length</label> </td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="btn_submit" id="btn_submit" value="Save." /></td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
