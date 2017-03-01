@@ -74,7 +74,7 @@ class SongsRepository
     }
 
     /**
-     * @param int $album_id
+     * @param $album_id
      * @return array
      * @throws Exception
      */
@@ -104,7 +104,7 @@ class SongsRepository
         }*/
 
         $o_album = AlbumRepository::LoadAlbum($album_id);
-        return $o_album->Songs;
+        return $o_album->Son;
     }
 
     /**

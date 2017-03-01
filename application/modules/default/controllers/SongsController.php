@@ -17,7 +17,7 @@ class SongsController extends Zend_Controller_Action
      */
     public function indexAction()
     {
-        $this->view->ar_songs = SongsRepository::LoadAllSongs();
+        $this->view->ar_songs = Songs::LoadAllEntities();
     }
 
     /**

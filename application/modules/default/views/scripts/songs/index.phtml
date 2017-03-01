@@ -24,20 +24,20 @@ $songs = $this->ar_songs;
     </thead>
     <?php
     foreach ($songs as $song):
-        $album = AlbumRepository::LoadAlbum($song->album_id);
+        $album = AlbumRepository::LoadAlbum($song['album_id']);
         ?>
 
         <tbody>
             <tr>
-                <td class="table_space"><?php echo $song->id; ?></td>
-                <td class="table_space"><?php echo $song->title; ?></td>
-                <td class="table_space"><?php echo $song->length; ?></td>
-                <td class="table_space"><?php echo "<a href='/default/album/albumDetails?id=" . $song->album_id . "'>" . $album->title . "</a>"; ?></td>
+                <td class="table_space"><?php echo $song['id']; ?></td>
+                <td class="table_space"><?php echo $song['title']; ?></td>
+                <td class="table_space"><?php echo $song['length']; ?></td>
+                <td class="table_space"><?php echo "<a href='/default/album/albumDetails?id=" . $song['album_id'] . "'>" . $album['title'] . "</a>"; ?></td>
 
                 <?php
-                    $edit_url = "/default/songs/editSong?id=".$song->id;
-                    $details_url = "/default/songs/songDetails?id=".$song->id;
-                    $delete_url = "/default/songs/deleteSong?id=".$song->id;
+                    $edit_url = "/default/songs/editSong?id=".$song['id'];
+                    $details_url = "/default/songs/songDetails?id=".$song['id'];
+                    $delete_url = "/default/songs/deleteSong?id=".$song['id'];
                  ?>
                 <td class="table_space"><a href="<?php echo $details_url; ?>">Details</a> || <a href="<?php echo $edit_url; ?>">Edit</a> || <a href="<?php echo $delete_url; ?>">Delete</a></td>
             </tr>

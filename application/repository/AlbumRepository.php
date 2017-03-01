@@ -163,8 +163,6 @@ class AlbumRepository
         $o_albumMeta->album_length = $ar_albumMeta['album_length'];
         $o_albumMeta->id = $ar_albumMeta['id'];
         $o_albumMeta->album_id = $ar_albumMeta['album_id'];
-        var_dump($o_albumMeta->album_id);
-        die();
         return $o_albumMeta;
     }
 

@@ -24,6 +24,24 @@ class Songs extends BaseSongs
         return $song;
     }
 
+    /**
+     * @return array
+     */
+    public static function LoadAllEntities()
+    {
+        $q_songs = Doctrine_Query::create()
+            ->select()
+            ->from("Songs s");
+        $songs = $q_songs->fetchArray();
+
+        return $songs;
+    }
+
+
+    /**
+     * @param array $o_song
+     * @throws Exception
+     */
     public static function SaveEntity($o_song)
     {
         if(empty($o_song))
@@ -48,5 +66,23 @@ class Songs extends BaseSongs
         {
             throw new Exception("Songs:SaveEntity: Song must be linked to an album. (Album id is empty)");
         }
+
+        /**
+         * @var Songs $model
+         */
+        $model = new Songs();
+
+        if(isset($o_song['song_id']))
+        {
+            $model = self::LoadEntity($o_song['song_id']);
+        }
+
+        $model->title = $song_title;
+        $model->length = $song_length;
+        $model->album_id = $song_album_id;
+
+        $model->save();
     }
+
+
 }
