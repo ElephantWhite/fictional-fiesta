@@ -13,6 +13,11 @@
 class Songs extends BaseSongs
 {
 
+    /**
+     * @param int $id
+     * @return Doctrine_Collection|Doctrine_Collection_OnDemand|Doctrine_Record|int|mixed|null
+     * @throws Exception
+     */
     public static function LoadEntity($id)
     {
         $songsTable = Doctrine_Core::getTable('Songs');
@@ -83,6 +88,4 @@ class Songs extends BaseSongs
 
         $model->save();
     }
-
-
 }
