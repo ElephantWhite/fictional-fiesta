@@ -131,7 +131,7 @@
     			<div id="searchbalk" class="input-group" >
   					<span class="input-group-addon" id="sizing-addon2"><li class="fa fa-search"></li></span>
   					<input type="text" id="search" class="form-control" placeholder="Search on title:" aria-describedby="sizing-addon2" onchange="">
-				</div>
+				</div><button id="send" onclick="Search()">Search!</button>
 			   		
     		</div>
     		 
@@ -145,18 +145,10 @@
 
 	</div>
 <script type="text/javascript">
-    var obj = document.getElementById("search");
-    obj.addEventListener("onkeydown", Search);
-
     function Search() {
-        var searchQuery = obj.value;
-        $.ajax({
-            url: "c:/wamp64/www/root3/application/repository/BaseRepository.php?search=" . searchQuery,
-            complete: function(response) {
-                alert("called function");
-            },
-            error: alert("Something went wrong.")
-        })
+        var searchQuery = document.getElementById("search").value;
+        console.log("searched. String is now:" . searchQuery);
+        window.location.assign("http://zf.localhost/default/search/str/" . searchQuery);
     }
 </script>
 </body>
