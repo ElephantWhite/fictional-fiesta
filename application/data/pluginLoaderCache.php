@@ -16,3 +16,4 @@ include_once 'Zend/Validate/File/Upload.php';
 include_once 'Zend/Filter/File/Rename.php';
 
 include_once 'Zend/View/Helper/Url.php';
+include_once 'Zend/View/Helper/HeadScript.php';

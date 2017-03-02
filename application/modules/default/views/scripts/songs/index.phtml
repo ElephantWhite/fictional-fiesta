@@ -15,7 +15,7 @@ $songs = $this->ar_songs;
 <table>
     <thead>
     <tr>
-        <th class="table_space">Song id</th>
+        <!--<th class="table_space">Song id</th>-->
         <th class="table_space">Song title</th>
         <th class="table_space">Song length</th>
         <th class="table_space">Album</th>
@@ -29,7 +29,7 @@ $songs = $this->ar_songs;
 
         <tbody>
             <tr>
-                <td class="table_space"><?php echo $song['id']; ?></td>
+                <!--<td class="table_space"><?php// echo $song['id']; ?></td>-->
                 <td class="table_space"><?php echo $song['title']; ?></td>
                 <td class="table_space"><?php echo $song['length']; ?></td>
                 <td class="table_space"><?php echo "<a href='/default/album/albumDetails?id=" . $song['album_id'] . "'>" . $album['title'] . "</a>"; ?></td>

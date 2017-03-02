@@ -3,26 +3,33 @@
 	<head>
 	<title>Don's Zend poging.</title>
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <link rel="stylesheet" href="skins/default/css/layout.css" />
+
 	<?php 
     	$s_buildnumber = $this->buildNumber();
-    	
-    	$this->loadSkin($this->baseUrl(), $this->getwebsitesettings($this->serverUrl(), 'skin'));
-    	$this->jQuery()->setLocalPath($this->baseUrl().'/javascript/jquery/'.$this->getwebsitesettings($this->serverUrl(), 'jquery').'?'.$this->buildnumber());
-    	$this->jQuery()->setUiLocalPath($this->baseUrl().'/javascript/jquery/'.$this->getwebsitesettings($this->serverUrl(), 'jquerythemejs').'?'.$this->buildnumber());
-    
-    	$this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/css/'.$this->getwebsitesettings($this->serverUrl(), 'jquerythemecss').'?'.$this->buildnumber());
+
+        //print $this->headScript()->appendFile($this->baseUrl().'/js/jquery.min.js');
+
+    	//$this->loadSkin($this->baseUrl(), $this->getwebsitesettings($this->serverUrl(), 'skin'));
+    	//$this->addStylesheet("c:/wamp64/www/root3/public/skins/default/css/layout.css");
+    	//$this->jQuery()->setLocalPath($this->baseUrl().'/javascript/jquery/'.$this->getwebsitesettings($this->serverUrl(), 'jquery').'?'.$this->buildnumber());
+    	//$this->jQuery()->setUiLocalPath($this->baseUrl().'/javascript/jquery/'.$this->getwebsitesettings($this->serverUrl(), 'jquerythemejs').'?'.$this->buildnumber());
+
+        //$this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/css/'.$this->getwebsitesettings($this->serverUrl(), 'jquerythemecss').'?'.$this->buildnumber());
         $this->jQuery()->addStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
-		$this->jQuery()->addStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
-		//$this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/css/'.$this->getwebsitesettings($this->serverUrl(), 'micheljonk').'?'.$this->buildnumber());
-    	$this->jQuery()->addStylesheet('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css');
-    	$this->jQuery()->enable();
-    	$this->jQuery()->uiEnable();
+        $this->jQuery()->addStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+        //$this->jQuery()->addStylesheet($this->baseUrl().'/javascript/jquery/css/'.$this->getwebsitesettings($this->serverUrl(), 'micheljonk').'?'.$this->buildnumber());
+        $this->jQuery()->addStylesheet('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css');
+        $this->jQuery()->enable();
+        $this->jQuery()->uiEnable();
+
     	echo $this->jQuery();
 	?>
 	
-	<script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script src="https://raw.githubusercontent.com/dreyescat/bootstrap-rating/master/bootstrap-rating.min.js"></script>
+	<!--<script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://raw.githubusercontent.com/dreyescat/bootstrap-rating/master/bootstrap-rating.min.js"></script>
 </head>
 <body>
 	<style>
@@ -100,55 +107,7 @@
 	  		margin-right: 2%;
 	  	}
 	</style>
-  <script>
-  $(document).ready(function(){
-  	
-  	 $.widget( "custom.catcomplete", $.ui.autocomplete, {
-    _create: function() {
-      this._super();
-      this.widget().menu( "option", "items", "> :not(.ui-autocomplete-category)" );
-    },
-    _renderMenu: function( ul, items ) {
-      var that = this,
-        currentCategory = "";
-      $.each( items, function( index, item ) {
-        var li;
-        if ( item.category != currentCategory ) {
-          ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>" );
-          currentCategory = item.category;
-        }
-        li = that._renderItemData( ul, item );
-        if ( item.category ) {
-          li.attr( "aria-label", item.category + " : " + item.label );
-        }
-      });
-    }
-  });
- 
- 
-    $( "#search" ).catcomplete({
-      delay: 0,
-      source: "/default/index/getseriesandfilms",
-		select: function (event, ui) { redirectToPage(ui.item.category, ui.item.id); }
-    });
-  });
- 
-	function redirectToPage(type, id)
-	{
-		if(type == "Movies")
-		{
-			window.location.replace("/default/films/show/id/" + id);
-		}
-		else if(type == "Series")
-		{
-			window.location.replace("/default/series/show/id/" + id);
-		}
-		 
-	}
-	$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-  </script>
+
 	
     <?php echo $this->flashMessages();?>
     <div id="wrapper">
@@ -171,7 +130,7 @@
     		<div id="menu_right">
     			<div id="searchbalk" class="input-group" >
   					<span class="input-group-addon" id="sizing-addon2"><li class="fa fa-search"></li></span>
-  					<input type="text" id="search" class="form-control" placeholder="Search for..." aria-describedby="sizing-addon2">
+  					<input type="text" id="search" class="form-control" placeholder="Search on title:" aria-describedby="sizing-addon2" onchange="">
 				</div>
 			   		
     		</div>
@@ -185,6 +144,20 @@
 		</div>
 
 	</div>
-	
+<script type="text/javascript">
+    var obj = document.getElementById("search");
+    obj.addEventListener("onkeydown", Search);
+
+    function Search() {
+        var searchQuery = obj.value;
+        $.ajax({
+            url: "c:/wamp64/www/root3/application/repository/BaseRepository.php?search=" . searchQuery,
+            complete: function(response) {
+                alert("called function");
+            },
+            error: alert("Something went wrong.")
+        })
+    }
+</script>
 </body>
 </html>

@@ -20,8 +20,8 @@ $song = $this->ar_song;
         <table>
             <tbody>
                 <tr>
-                    <td><label for="txt_id">Song name:</label></td>
-                    <td><input readonly type="text" name="txt_id" id="txt_id" value="<?php echo $song->id ?>" /></td>
+                    <!--<td><label for="txt_id">Song name:</label></td>-->
+                    <td><input readonly type="hidden" name="txt_id" id="txt_id" value="<?php echo $song->id ?>" /></td>
                 </tr>
                 <tr>
                     <td><label for="txt_title">Song name:</label></td>

@@ -1,4 +1,5 @@
 <?php
+include "BaseRepository.php";
 class SongsRepository
 {
     /**
@@ -34,5 +35,21 @@ class SongsRepository
             ->where("s.id = ?", $id);
         $q_deleteSong->execute();
         return;
+    }
+
+    public static function SearchForSong($search_string)
+    {
+        if(empty($search_string))
+        {
+            throw new Exception("SongsRepository::SearchForSong: The parameter 'search_string' can not be ampty.");
+        }
+
+        $s_search_string = "%" . $search_string . "%";
+        $q_search = Doctrine_Query::create()
+            ->select()
+            ->from("Songs s")
+            ->where("s.title LIKE ?", $s_search_string);
+        $ar_results = $q_search->fetchArray();
+        return $ar_results;
     }
 }
