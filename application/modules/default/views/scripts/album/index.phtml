@@ -12,7 +12,7 @@ echo "<a href='/default/songs/index'>Songs overview</a>";
 <table>
     <thead>
         <tr>
-            <td class="table_space">Album id</td>
+            <!--<td class="table_space">Album id</td>-->
             <td class="table_space">Album title</td>
             <td class="table_space">Album Artist</td>
             <td class="table_space">Options</td>
@@ -23,7 +23,7 @@ echo "<a href='/default/songs/index'>Songs overview</a>";
 foreach($this->ar_albums as $album)
 {
     echo "<tr>";
-        echo "<td class=\"table_space\">" . $album['id'] . "</td>";
+        //echo "<td class=\"table_space\">" . $album['id'] . "</td>";
         echo "<td class=\"table_space\">" . $album['title'] . "</td>";
         echo "<td class='table_space'>" . $album['artist'] . "</td>";
         echo "<td class=\"table_space\"> <a href='/album/albumDetails?id=" . $album['id'] . "'>Details</a> || <a href='/album/editAlbum?id=" . $album['id'] . "'>Edit</a> || <a href='/album/deleteAlbum?id=" . $album['id'] . "'>Delete</a>" . "</td>";

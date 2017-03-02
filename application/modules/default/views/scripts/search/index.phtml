@@ -1,10 +1,53 @@
+<head>
+    <style>
+        .table_space {
+            padding: 10px 10px 10px 10px;
+        }
+    </style>
+</head>
+
 <?php
+echo "<h1 style=\"color:rgba(0,180,0,0.8);\">Your search results for '".$this->str."'</h1>";
+$ar_res = $this->ar_results;
+//var_dump($ar_res);
 
-foreach($this->ar_results as $result)
+$albums_count = count($ar_res['albums']);
+$songs_count = count($ar_res['songs']);
+
+echo "<h2>Albums</h2>";
+if(!$albums_count > 0)
 {
-    echo key($result);
-    foreach($result as $item)
+    echo "<h3 style='color:rgba(255,0,0,0.4);'>No albums match your search.</h3>";
+}
+else
+{
+    echo "<table><thead><tr><th>Name</th><th>Artist</th></tr></thead><tbody>";
+    foreach($ar_res['albums'] as $item)
     {
-
+        echo "<tr>
+            <td class='table_space'><a href='/default/album/albumDetails/id/".$item['id']."'>" . $item['title'] . "</a></td>
+            <td class='table_space'>" . $item['artist'] . "</td>
+        </tr>";
     }
+    echo "</tbody><table>";
+}
+
+
+
+echo "<br/><h2>Songs</h2>";
+if(!$songs_count > 0)
+{
+    echo "<h3 style='color:rgba(255,0,0,0.4);'>No songs match your search.</h3>";
+}
+else
+{
+    echo "<table><thead><tr><th>Name</th><th>Length</th></tr></thead><tbody>";
+    foreach($ar_res['songs'] as $item)
+    {
+        echo "<tr>
+            <td class='table_space'><a href='/default/songs/songDetails/id/".$item['id']."'>" . $item['title'] . "</a></td>
+            <td class='table_space'>" . $item['length'] . "</td>
+        </tr>";
+    }
+    echo "</tbody><table>";
 }

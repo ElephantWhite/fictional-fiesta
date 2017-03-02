@@ -1,6 +1,5 @@
 <?php
-include "C:/wamp64/www/root3/application/repository/SongsRepository.php";
-include "C:/wamp64/www/root3/application/repository/AlbumRepository.php";
+include "C:/wamp64/www/root3/application/repository/BaseRepository.php";
 class AlbumController extends Zend_Controller_Action
 {
     /**

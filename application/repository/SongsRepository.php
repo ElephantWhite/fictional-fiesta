@@ -1,5 +1,4 @@
 <?php
-include "BaseRepository.php";
 class SongsRepository
 {
     /**
@@ -48,7 +47,7 @@ class SongsRepository
         $q_search = Doctrine_Query::create()
             ->select()
             ->from("Songs s")
-            ->where("s.title LIKE ?", $s_search_string);
+            ->where("lower(s.title) LIKE ?", strtolower($s_search_string));
         $ar_results = $q_search->fetchArray();
         return $ar_results;
     }

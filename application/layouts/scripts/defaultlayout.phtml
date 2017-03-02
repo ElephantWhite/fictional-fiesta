@@ -118,22 +118,15 @@
     			<li><a class='menu-item' href="/default/films/"><i class="fa fa-video-camera fa-fw" data-toggle="tooltip" data-placement="bottom" title="Films"></i></a></li>
 
     		</ul>
-    		<?php if(!$this->CheckLogin()) {?>
-    				<div class="login_item"><a class="menu-item" href="/default/auth/login"><i class="fa fa-sign-in fa-fw" data-toggle="tooltip" data-placement="bottom" title="Login"></i></a></div>
-    				<div class="login_item"><a class="menu-item" href="/default/auth/signup"><i class="fa fa-user-plus fa-fw" data-toggle="tooltip" data-placement="bottom" title="Create Account"></i></a></div>
 
-    				<?php } else { ?>  
-    					<div class="login_item"><a class="menu-item" href="/default/auth/logout"><i class="fa fa-sign-out fa-fw" data-toggle="tooltip" data-placement="bottom" title="Logout"></i></a></div>
-    					<div class="login_item"><a class="menu-item" href="/default/auth/home"><i class="fa fa-user fa-fw" data-toggle="tooltip" data-placement="bottom" title="Your Account"></i></a></div>
-    					
-    					<?php } ?>	
+    				<div class="login_item"><button style="color:black;" class="menu-item" id="send" onclick="Search()">Search!</button></div>
     		<div id="menu_right">
     			<div id="searchbalk" class="input-group" >
   					<span class="input-group-addon" id="sizing-addon2"><li class="fa fa-search"></li></span>
-  					<input type="text" id="search" class="form-control" placeholder="Search on title:" aria-describedby="sizing-addon2" onchange="">
-				</div><button id="send" onclick="Search()">Search!</button>
-			   		
+  					<input type="text" id="search" class="form-control" placeholder="Search on title:" aria-describedby="sizing-addon2">
+                </div>
     		</div>
+
     		 
     	</div>
     	<hr>
@@ -148,7 +141,7 @@
     function Search() {
         var searchQuery = document.getElementById("search").value;
         console.log("searched. String is now:" . searchQuery);
-        window.location.assign("http://zf.localhost/default/search/str/" . searchQuery);
+        window.location.assign("http://zf.localhost/default/search/index/str/" + searchQuery);
     }
 </script>
 </body>

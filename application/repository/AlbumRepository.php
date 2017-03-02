@@ -1,6 +1,4 @@
 <?php
-//namespace Repository\AlbumRepository;
-//include "BaseRepository.php";
 class AlbumRepository
 {
     /**
@@ -192,12 +190,11 @@ class AlbumRepository
         {
             throw new Exception("AlbumRepository::SearchForAlbum: The parameter 'search_string' can not be empty.");
         }
-
         $s_search_string = "%" . $search_string . "%";
         $q_search = Doctrine_Query::create()
             ->select()
-            ->from("Albums alb")
-            ->where("alb.title LIKE ?", $s_search_string);
+            ->from("Album alb")
+            ->where("lower(alb.title) LIKE ?", strtolower($s_search_string));
         $ar_results = $q_search->fetchArray();
         return $ar_results;
     }

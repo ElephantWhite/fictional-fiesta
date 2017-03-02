@@ -24,7 +24,14 @@ class SearchController extends Zend_Controller_Action
             die(0);
         }
 
-        $this->ar_results = BaseRepository::Search($params['str']);
+       if(!empty($params['str']))
+       {
+           $this->view->str = $params['str'];
+           $this->view->ar_results = BaseRepository::Search($params['str']);
+       }
+       else
+       {
+            return false;
+       }
     }
-
 }
