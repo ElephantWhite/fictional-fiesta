@@ -194,7 +194,7 @@ class AlbumRepository
         $q_search = Doctrine_Query::create()
             ->select()
             ->from("Album alb")
-            ->where("lower(alb.title) LIKE ?", strtolower($s_search_string));
+            ->where("lower(alb.title) LIKE ? OR lower(alb.artist) LIKE ?", array(strtolower($s_search_string), strtolower($s_search_string)));
         $ar_results = $q_search->fetchArray();
         return $ar_results;
     }

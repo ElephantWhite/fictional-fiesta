@@ -7,8 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cd137523-d515-48fe-81af-5a2956579e98" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/data/cache/zend_cache---internal-metadatas---app_cachedoctrine_models" afterPath="$PROJECT_DIR$/application/data/cache/zend_cache---internal-metadatas---app_cachedoctrine_models" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/layouts/scripts/defaultlayout.phtml" afterPath="$PROJECT_DIR$/application/layouts/scripts/defaultlayout.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/repository/AlbumRepository.php" afterPath="$PROJECT_DIR$/application/repository/AlbumRepository.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,7 +33,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="defaultlayout.phtml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="defaultlayout.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/layouts/scripts/defaultlayout.phtml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
@@ -42,16 +41,6 @@
               <folding>
                 <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SongsRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/repository/SongsRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="669">
-              <caret line="49" column="74" lean-forward="false" selection-start-line="49" selection-start-column="74" selection-end-line="49" selection-end-column="74" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -99,26 +88,26 @@
       <file leaf-file-name="AlbumRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/repository/AlbumRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="584">
-              <caret line="191" column="9" lean-forward="false" selection-start-line="191" selection-start-column="9" selection-end-line="191" selection-end-column="9" />
+            <state relative-caret-position="737">
+              <caret line="200" column="1" lean-forward="true" selection-start-line="200" selection-start-column="1" selection-end-line="200" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.phtml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.phtml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/search/index.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+            <state relative-caret-position="187">
+              <caret line="11" column="2" lean-forward="false" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
               <folding>
-                <marker date="1488454856978" expanded="true" signature="140:164" ph="..." />
-                <marker date="1488454856978" expanded="true" signature="419:443" ph="..." />
-                <marker date="1488454856978" expanded="true" signature="419:478" ph="..." />
-                <marker date="1488454856978" expanded="true" signature="632:836" ph="..." />
-                <marker date="1488454856978" expanded="true" signature="877:1406" ph="..." />
-                <marker date="1488454856978" expanded="true" signature="952:976" ph="..." />
-                <marker date="1488454856978" expanded="true" signature="1163:1366" ph="..." />
+                <marker date="1488463584087" expanded="true" signature="140:164" ph="..." />
+                <marker date="1488463584087" expanded="true" signature="419:443" ph="..." />
+                <marker date="1488463584087" expanded="true" signature="419:478" ph="..." />
+                <marker date="1488463584087" expanded="true" signature="632:836" ph="..." />
+                <marker date="1488463584087" expanded="true" signature="877:1406" ph="..." />
+                <marker date="1488463584087" expanded="true" signature="952:976" ph="..." />
+                <marker date="1488463584087" expanded="true" signature="1163:1366" ph="..." />
               </folding>
             </state>
           </provider>
@@ -191,11 +180,11 @@
         <option value="$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php" />
         <option value="$PROJECT_DIR$/application/repository/SongsRepository.php" />
         <option value="$PROJECT_DIR$/application/repository/BaseRepository.php" />
-        <option value="$PROJECT_DIR$/application/repository/AlbumRepository.php" />
         <option value="$PROJECT_DIR$/application/modules/default/controllers/SearchController.php" />
-        <option value="$PROJECT_DIR$/application/modules/default/views/scripts/search/index.phtml" />
         <option value="$PROJECT_DIR$/application/modules/default/views/scripts/album/index.phtml" />
         <option value="$PROJECT_DIR$/application/layouts/scripts/defaultlayout.phtml" />
+        <option value="$PROJECT_DIR$/application/repository/AlbumRepository.php" />
+        <option value="$PROJECT_DIR$/application/modules/default/views/scripts/search/index.phtml" />
       </list>
     </option>
   </component>
@@ -511,7 +500,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../root" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path" value="C:/Program Files (x86)/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
@@ -599,12 +588,12 @@
       <workItem from="1488443795949" duration="3045000" />
       <workItem from="1488447068701" duration="62000" />
       <workItem from="1488447138643" duration="1238000" />
-      <workItem from="1488448400923" duration="7790000" />
+      <workItem from="1488448400923" duration="8716000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98512000" />
+    <option name="totallyTimeSpent" value="99438000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -785,13 +774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/library/Doctrine/Doctrine/Query/Abstract.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="1122" column="7" lean-forward="true" selection-start-line="1122" selection-start-column="7" selection-end-line="1122" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/library/Doctrine/Doctrine/Collection.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -933,14 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/repository/AlbumRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="191" column="9" lean-forward="false" selection-start-line="191" selection-start-column="9" selection-end-line="191" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/repository/SongsRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="669">
@@ -989,22 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/search/index.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding>
-            <marker date="1488454856978" expanded="true" signature="140:164" ph="..." />
-            <marker date="1488454856978" expanded="true" signature="419:443" ph="..." />
-            <marker date="1488454856978" expanded="true" signature="419:478" ph="..." />
-            <marker date="1488454856978" expanded="true" signature="632:836" ph="..." />
-            <marker date="1488454856978" expanded="true" signature="877:1406" ph="..." />
-            <marker date="1488454856978" expanded="true" signature="952:976" ph="..." />
-            <marker date="1488454856978" expanded="true" signature="1163:1366" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/album/index.phtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -1019,6 +977,38 @@
           <caret line="102" column="9" lean-forward="true" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
           <folding>
             <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/Doctrine/Doctrine/Query/Abstract.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="1693" column="20" lean-forward="false" selection-start-line="1693" selection-start-column="20" selection-end-line="1693" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/repository/AlbumRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="737">
+          <caret line="200" column="1" lean-forward="true" selection-start-line="200" selection-start-column="1" selection-end-line="200" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/search/index.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="2" lean-forward="false" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+          <folding>
+            <marker date="1488463584087" expanded="true" signature="140:164" ph="..." />
+            <marker date="1488463584087" expanded="true" signature="419:443" ph="..." />
+            <marker date="1488463584087" expanded="true" signature="419:478" ph="..." />
+            <marker date="1488463584087" expanded="true" signature="632:836" ph="..." />
+            <marker date="1488463584087" expanded="true" signature="877:1406" ph="..." />
+            <marker date="1488463584087" expanded="true" signature="952:976" ph="..." />
+            <marker date="1488463584087" expanded="true" signature="1163:1366" ph="..." />
           </folding>
         </state>
       </provider>
