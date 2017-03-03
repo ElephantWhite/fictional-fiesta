@@ -13,52 +13,10 @@ class IndexController extends Zend_Controller_Action
     public function indexAction()
     {
     	$session = Zend_Session::namespaceGet("album_session");
-		$s_rtp_roletype = isset($session['rtp_roletype']) ? $session['rtp_roletype'] : '';
+    	$this->_redirect("/default/album/");
 		
 	}
 
-	public function albumsAction()
-    {
-        $albums = array();
-        $this->_helper->layout->disableLayout();
-
-        $q_albums = Doctrine_Query::create()
-            ->select()
-            ->from("Album alb");
-        $temp_albums = $q_albums->fetchArray();
-
-        foreach($temp_albums as $album)
-        {
-            array_push($albums, array('id' => $album['id'], 'artist' => $album['artist'], 'title' => $album['title']));
-        }
-        $this->view->ar_albums = $albums;
-    }
-
-    public function albumDetailsAction($id)
-    {
-        $albums = array();
-
-        $this->_helper->layout->disableLayout();
-
-        $q_albums = Doctrine_Query::create()->select()->from("Album alb")->where('alb.id = ' . $id);
-        $temp_albums = $q_albums->fetchArray();
-
-        foreach($temp_albums as $album)
-        {
-            array_push($albums, array('id' => $album['id'], 'artist' => $album['artist'], 'title' => $album['title']));
-        }
-        $this->view->ar_albums = $albums;
-    }
-
-    public function addAlbumAction(Album $album)
-    {
-
-    }
-
-    public function editAlbum($id)
-    {
-
-    }
 
     public function getseriesandfilmsAction()
     {

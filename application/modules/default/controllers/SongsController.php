@@ -68,11 +68,17 @@ class SongsController extends Zend_Controller_Action
     public function deletesongAction()
     {
         $params = $this->getRequest()->getParams();
-        if(isset($params['id']))
+        if(isset($params['conf']))
         {
-            SongsRepository::DeleteSong($params['id']);
+            if ($params['conf'] == true)
+            {
+                if (isset($params['id']))
+                {
+                    SongsRepository::DeleteSong($params['id']);
+                }
+                $this->_redirect("/default/songs/index/");
+            }
         }
-        $this->_redirect("/default/songs/index/");
     }
 
     /**
