@@ -12,7 +12,7 @@ class SongsRepository
         {
             throw new Exception("SongsRepository::LoadSongsPerAlbum: Parameter 'album_id' can not be empty.");
         }
-        $o_album = AlbumRepository::LoadAlbum($album_id);
+        $o_album = album::LoadEntity($album_id);
         return $o_album->Songs;
     }
 

@@ -39,9 +39,9 @@ abstract class BaseAlbumMeta extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('album_length', 'string', 11, array(
+        $this->hasColumn('album_length', 'string', 50, array(
              'type' => 'string',
-             'length' => 11,
+             'length' => 50,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

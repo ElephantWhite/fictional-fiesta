@@ -52,55 +52,18 @@ class AlbumController extends Zend_Controller_Action
     {
         //Get request parameters (POST/GET)
         $params = $this->getRequest()->getParams();
+        if(!isset($params['btn_submit']))
+            $this->view->ar_album = Album::_LoadEntity($params['id']);
 
-        //Only try to edit something if there is an identifier.
-        if(isset($params['id'])) {
-            //Get the current data for the selected album to edit.
-            $q_album = Doctrine_Query::create()
-                ->select()
-                ->from('Album alb')
-                ->leftJoin("alb.AlbumMeta am")
-                ->where('alb.id = ' . $params['id']);
-            $ar_album = $q_album->fetchArray();
-            foreach($ar_album as $album)
-            {
-                $album['album_length'] = $album['AlbumMeta'][0]['album_length'];
-                if($album['album_length'] == null)
-                {
-                    $album['album_length'] = 0;
-                }
-            }
-            //Return the selected album.
-            $this->view->ar_albums = $ar_album;
-        }
-        //Get the parameters of the current request.
-        $params = $this->getRequest()->getParams();
-        //Only edit if there is something to edit. If either of there parameters are missing, something went wrong.
-        if((isset($params['txt_title'])) && (isset($params['txt_artist'])) && (isset($params['txt_album_length'])))
+        if(isset($params['btn_submit']))
         {
-            //Create a new entity to save data to, and set data.
-            $model = new Album();
-            $model_meta = new AlbumMeta();
-            $model->id = isset($params['txt_id']) ? $params['txt_id'] : null;
-            $model->artist = isset($params['txt_artist']) ? $params['txt_artist'] : null;
-            $model->title = isset($params['txt_title']) ? $params['txt_title'] : null;
-            $model_meta->album_id = isset($params['txt_id']) ? $params['txt_id'] : null;
-            $model_meta->album_length = isset($params['txt_album_length']) ? $params['txt_album_length'] : null;
-            //Create the query to update the selected album.
-            $q_updateAlbum = Doctrine_Query::create()
-                ->update("Album alb")
-                ->set('artist', '?', $model->artist)
-                ->set('title', '?', $model->title)
-                ->where('id = ?', $model->id);
-            //Execute the created query.
-            $q_updateAlbum->execute();
+            $o_album = array();
+            $o_album['album_id'] = empty($params['txt_id']) ? null : $params['txt_id'];
+            $o_album['album_artist'] = empty($params['txt_artist']) ? null : $params['txt_artist'];
+            $o_album['album_title'] =  empty($params['txt_title']) ? null : $params['txt_title'];
+            $o_album['album_length'] =  empty($params['txt_album_length']) ? null : $params['txt_album_length'];
 
-            $q_UpdateAlbumMeta = Doctrine_Query::create()
-                ->update("AlbumMeta am")
-                ->set('album_length', '?', $model_meta->album_length)
-                ->where('album_id = ?', $model_meta->album_id);
-            $q_UpdateAlbumMeta->execute();
-            //Return to the index page.
+            Album::SaveEntity($o_album);
             $this->_redirect("/default/album/index");
         }
     }
@@ -113,18 +76,17 @@ class AlbumController extends Zend_Controller_Action
      */
     public function deletealbumAction()
     {
-        //Get request parameters from POST and GET to get an identifier to delete an album.
         $params = $this->getRequest()->getParams();
-        //Check if there is an identifier, if not an album can't be deleted.
-        if(isset($params['id']))
+        if(isset($params['conf']))
         {
-            AlbumRepository::DeleteAlbum($params['id']);
-            $this->_redirect("/default/album/index");
-        }
-        else
-        {
-            //Inform the user that no album was selected.
-            echo "No album was selected.";
+            if ($params['conf'] == true)
+            {
+                if (isset($params['id']))
+                {
+                    AlbumRepository::DeleteAlbum($params['id']);
+                }
+                $this->_redirect("/default/songs/index/");
+            }
         }
     }
 
@@ -136,25 +98,19 @@ class AlbumController extends Zend_Controller_Action
        $params = $this->getRequest()->getParams();
        if(isset($params['btn_submit']))
        {
-           $params['id']            = isset($params['txt_id'])              ? $params['txt_id']             : null;
-           $params['title']         = isset($params['txt_title'])           ? $params['txt_title']          : null;
-           $params['artist']        = isset($params['txt_artist'])          ? $params['txt_artist']         : null;
-           $params['album_length']  = isset($params['txt_album_length'])    ? $params['txt_album_length']   : null;
+           $params['album_id']            = isset($params['txt_id'])              ? $params['txt_id']             : null;
+           $params['album_title']         = isset($params['txt_title'])           ? $params['txt_title']          : null;
+           $params['album_artist']        = isset($params['txt_artist'])          ? $params['txt_artist']         : null;
+           $params['album_length']        = isset($params['txt_album_length'])    ? $params['txt_album_length']   : null;
 
            $o_album = array(
-               'id' => $params['id'],
-               'title' => $params['title'],
-               'artist' => $params['artist'],
+               'id' => $params['album_id'],
+               'title' => $params['album_title'],
+               'artist' => $params['album_artist'],
                'album_length' => $params['album_length']
            );
 
-           $o_album = AlbumRepository::SaveAlbum($o_album);
-
-           $o_album_meta = array(
-               'album_id' => $o_album->id,
-               'album_length' => $params['album_length'],
-           );
-           AlbumRepository::SaveAlbumMeta($o_album_meta);
+           Album::SaveEntity($o_album);
            $this->_redirect("/default/album/index/");
        }
    }

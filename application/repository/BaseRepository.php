@@ -5,7 +5,6 @@ class BaseRepository
 {
     public static function Search($_searchQuery)
     {
-        $result = array();
         $albums = AlbumRepository::SearchForAlbum($_searchQuery);
         $songs = SongsRepository::SearchForSong($_searchQuery);
         $result = array('albums' => $albums, 'songs' => $songs);

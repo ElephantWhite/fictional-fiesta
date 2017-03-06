@@ -13,4 +13,114 @@
 class Album extends BaseAlbum
 {
 
+    //function doesn't work as it should.
+    public static function LoadEntity($id)
+    {
+        $albumTable = Doctrine_Core::getTable('Album');
+        $album = $albumTable->find($id);
+        if($album == null || !isset($album))
+        {
+            throw new Exception("Album::LoadEntity: Couldn't load the entity with the given identifier.");
+        }
+        return $album;
+    }
+
+    public static function _LoadEntity($id)
+    {
+        $q_album = Doctrine_Query::create()
+            ->select("*")
+            ->from("Album a")
+            ->where("a.id = ?", $id);
+        /**
+         * @var Album $o_album
+         */
+        $o_album = $q_album->fetchOne();
+        //var_dump($o_album);
+
+        $q_meta = Doctrine_Query::create()
+            ->select("*")
+            ->from("AlbumMeta am")
+            ->where("am.album_id = ?", $o_album->id);
+        /**
+         * @var AlbumMeta $o_meta
+         */
+        $o_meta = $q_meta->fetchOne();
+
+        $ar_album = array(
+            'id' => $o_album->id,
+            'title' => $o_album->title,
+            'artist' => $o_album->artist,
+            'album_length' => $o_meta->album_length
+        );
+        return $ar_album;
+    }
+
+    public static function LoadAllEntities()
+    {
+        $q_albums = Doctrine_Query::create()
+            ->select()
+            ->from("Album alb");
+        $albums = $q_albums->fetchArray();
+
+        return $albums;
+    }
+
+    /**
+     * @param array $o_album
+     * @throws Exception
+     */
+    public static function SaveEntity($o_album)
+    {
+        if(empty($o_album))
+        {
+            throw new Exception("Songs::SaveEntity: The object passed to the function is empty.");
+        }
+
+        $album_id = empty($o_album['album_id']) ? null : $o_album['album_id'];
+        $album_title = empty($o_album['album_title']) ? null : $o_album['album_title'];
+        $album_artist = empty($o_album['album_artist']) ? null : $o_album['album_artist'];
+        $album_length = empty($o_album['album_length']) ? null : $o_album['album_length'];
+
+        if(empty($album_title))
+        {
+            throw new Exception("Album::SaveEntity: Album title can not be empty.");
+        }
+        if(empty($album_length))
+        {
+            throw new Exception("Album::SaveEntity: Album length can not be empty.");
+        }
+        if(empty($album_artist))
+        {
+            throw new Exception("Album::SaveEntity: Album artist can not be empty.");
+        }
+
+
+        /**
+         * @var Album $model
+         */
+        $model = new Album();
+        $meta = new AlbumMeta();
+        if(isset($o_album['album_id']))
+        {
+            $model = self::LoadEntity($album_id);
+        }
+
+        if(!empty($model->id))
+        {
+            $meta = $model->AlbumMeta;
+        }
+
+        $model->title = $album_title;
+        $model->artist = $album_artist;
+        $meta->album_length = $album_length;
+        $meta->album_id = $model->id;
+
+        var_dump($model);
+        var_dump($meta);
+
+        $model->save();
+        $meta->save();
+
+    }
+
 }

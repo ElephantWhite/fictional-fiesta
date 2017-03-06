@@ -1,7 +1,29 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: donof
- * Date: 24-Feb-17
- * Time: 02:32 PM
- */
+$song = Album::LoadEntity($_GET['id']);
+echo "One moment please, deleting: " . $song->title;
+$song = null; //destroy loaded entity to avoid too much thrashing.
+?>
+
+<script>
+    $(document).ready(function(){
+        var queryDict = {};
+        location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]});
+        console.log(queryDict);
+        if(queryDict['conf'] == true || false)
+        {
+            location.assign("/default/songs/");
+        }
+
+        if(confirm("Are you sure you want to delete that song?")) {
+            queryDict = {};
+            location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]});
+            console.log(queryDict);
+            var id = queryDict['id'];
+
+            var redirString = "/default/album/deleteAlbum?id=" + id + "&conf=true";
+            window.location.assign(redirString);
+        } else {
+            window.location.assign("/default/album/");
+        }
+    });
+</script>

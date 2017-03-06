@@ -14,10 +14,11 @@
 <form id="frm_edit">
     <table>
         <?php
-        foreach($this->ar_albums as $album): ?>
+        $album = $this->ar_album;
+        ?>
         <tr>
-            <td><label for="txt_id">Editing:</label></td>
-            <td><input type="text" name="txt_id" id="txt_id" value="<?php echo $album['id']; ?>" readonly /></td>
+            <td><label for="txt_id"></label></td>
+            <td><input type="hidden" name="txt_id" id="txt_id" value="<?php echo $album['id']; ?>" readonly /></td>
         </tr>
         <tr>
             <td><label for="txt_title">Edit title:</label></td>
@@ -29,11 +30,10 @@
         </tr>
         <tr>
             <td><label for="txt_album_length">Album length</label></td>
-            <td><input type="text" id="txt_album_length" name="txt_album_length" value="<?php echo $album['AlbumMeta'][0]['album_length'] ?>" required /></td>
+            <td><input type="text" id="txt_album_length" name="txt_album_length" value="<?php echo $album['album_length'] ?>" required /></td>
         </tr>
         <tr>
             <td><input type="submit" name="btn_submit" id="btn_submit" value="Edit"></td>
         </tr>
-        <?php endforeach; ?>
     </table>
 </form>

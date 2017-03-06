@@ -2,27 +2,6 @@
 class AlbumRepository
 {
     /**
-     * @param Album $model
-     */
-    public static function _SaveAlbum($model)
-    {
-        if ($model->id == null) {
-            $album = new Album();
-            $album->id = $model->id;
-            $album->title = $model->title;
-            $album->artist = $model->artist;
-            $album->save();
-        } else {
-            $album = new Album();
-            $album->title = $model->title;
-            $album->artist = $model->artist;
-            $album->save();
-        }
-        return;
-    }
-
-
-    /**
      * @param $o_album array
      * @throws Exception
      * @return Album $model
@@ -80,37 +59,6 @@ class AlbumRepository
         }
         $model->save();
         return;
-    }
-
-    /**
-     * @param $id
-     * @return Album
-     */
-    public static function LoadAlbum($id)
-    {
-        $o_model = new Album();
-        if($id > 0)
-        {
-            $q_SelectOneAlbum = Doctrine_Query::create()
-                ->select()
-                ->from("Album alb")
-                ->leftJoin("alb.Songs s")
-                ->where("alb.id = ?", $id);
-            $o_model = $q_SelectOneAlbum->fetchOne();
-        }
-        return $o_model;
-    }
-
-    /**
-     * @return array|Doctrine_Collection|Doctrine_Collection_OnDemand|int|mixed
-     */
-    public static function LoadAllAlbums()
-    {
-        $q_SelectAlbums = Doctrine_Query::create()
-            ->select()
-            ->from("Album alb");
-        $ar_Albums = $q_SelectAlbums->fetchArray();
-        return $ar_Albums;
     }
 
     public static function LoadAlbumMeta($id)
