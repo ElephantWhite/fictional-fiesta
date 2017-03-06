@@ -10,7 +10,8 @@ Doctrine_Manager::getInstance()->bindComponent('Album', 'doctrine');
  * @property integer $id
  * @property string $artist
  * @property string $title
- * @property Doctrine_Collection $AlbumMeta
+ * @property integer $album_meta_id
+ * @property AlbumMeta $AlbumMeta
  * @property Doctrine_Collection $Songs
  * 
  * @package    ##PACKAGE##
@@ -49,14 +50,23 @@ abstract class BaseAlbum extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
+        $this->hasColumn('album_meta_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
+             'fixed' => false,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('AlbumMeta', array(
-             'local' => 'id',
-             'foreign' => 'album_id'));
+        $this->hasOne('AlbumMeta', array(
+             'local' => 'album_meta_id',
+             'foreign' => 'id'));
 
         $this->hasMany('Songs', array(
              'local' => 'id',

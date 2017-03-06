@@ -18,22 +18,23 @@
         ?>
         <tr>
             <td><label for="txt_id"></label></td>
-            <td><input type="hidden" name="txt_id" id="txt_id" value="<?php echo $album['id']; ?>" readonly /></td>
+            <td><input type="hidden" name="txt_id" id="txt_id" value="<?php echo $album->id; ?>" readonly /></td>
         </tr>
         <tr>
             <td><label for="txt_title">Edit title:</label></td>
-            <td><input type="text" id="txt_title" name="txt_title" value="<?php echo $album['title']; ?>" required /></td>
+            <td><input type="text" id="txt_title" name="txt_title" value="<?php echo $album->title; ?>" required /></td>
         </tr>
         <tr>
             <td><label for="txt_artist">Edit Artist:</label></td>
-            <td><input type="text" id="txt_artist" name="txt_artist" value="<?php echo $album['artist']; ?>" required /></td>
+            <td><input type="text" id="txt_artist" name="txt_artist" value="<?php echo $album->artist; ?>" required /></td>
         </tr>
         <tr>
             <td><label for="txt_album_length">Album length</label></td>
-            <td><input type="text" id="txt_album_length" name="txt_album_length" value="<?php echo $album['album_length'] ?>" required /></td>
+            <td><input type="text" id="txt_album_length" name="txt_album_length" value="<?php echo $album->AlbumMeta->album_length ?>" required /></td>
         </tr>
         <tr>
             <td><input type="submit" name="btn_submit" id="btn_submit" value="Edit"></td>
         </tr>
     </table>
+</form>
 </form>

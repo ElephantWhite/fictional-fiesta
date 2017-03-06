@@ -53,7 +53,7 @@ class AlbumController extends Zend_Controller_Action
         //Get request parameters (POST/GET)
         $params = $this->getRequest()->getParams();
         if(!isset($params['btn_submit']))
-            $this->view->ar_album = Album::_LoadEntity($params['id']);
+            $this->view->ar_album = Album::LoadEntity($params['id']);
 
         if(isset($params['btn_submit']))
         {
@@ -139,14 +139,14 @@ class AlbumController extends Zend_Controller_Action
 
         foreach($temp_albums as $album)
         {
-            if($album['AlbumMeta'][0]['album_length'] == null)
+            if($album['AlbumMeta']['album_length'] == null)
             {
-                $album['AlbumMeta'][0]['album_length'] = 0;
+                $album['AlbumMeta']['album_length'] = 0;
             }
             array_push($albums, array('id' => $album['id'],
                 'artist' => $album['artist'],
                 'title' => $album['title'],
-                'album_length' => $album['AlbumMeta'][0]['album_length']));
+                'album_length' => $album['AlbumMeta']['album_length']));
         }
         $this->view->ar_songs = SongsRepository::LoadSongsPerAlbum($id);
         $this->view->ar_albums = $albums;

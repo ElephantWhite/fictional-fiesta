@@ -13,6 +13,11 @@
 class Album extends BaseAlbum
 {
 
+    public function preInsert($event)
+    {
+        
+    }
+
     //function doesn't work as it should.
     public static function LoadEntity($id)
     {
@@ -23,36 +28,6 @@ class Album extends BaseAlbum
             throw new Exception("Album::LoadEntity: Couldn't load the entity with the given identifier.");
         }
         return $album;
-    }
-
-    public static function _LoadEntity($id)
-    {
-        $q_album = Doctrine_Query::create()
-            ->select("*")
-            ->from("Album a")
-            ->where("a.id = ?", $id);
-        /**
-         * @var Album $o_album
-         */
-        $o_album = $q_album->fetchOne();
-        //var_dump($o_album);
-
-        $q_meta = Doctrine_Query::create()
-            ->select("*")
-            ->from("AlbumMeta am")
-            ->where("am.album_id = ?", $o_album->id);
-        /**
-         * @var AlbumMeta $o_meta
-         */
-        $o_meta = $q_meta->fetchOne();
-
-        $ar_album = array(
-            'id' => $o_album->id,
-            'title' => $o_album->title,
-            'artist' => $o_album->artist,
-            'album_length' => $o_meta->album_length
-        );
-        return $ar_album;
     }
 
     public static function LoadAllEntities()
@@ -102,20 +77,15 @@ class Album extends BaseAlbum
         if(isset($o_album['album_id']))
         {
             $model = self::LoadEntity($album_id);
+            $meta = $model->AlbumMeta;
         }
 
-        if(!empty($model->id))
-        {
-            $meta = AlbumMeta::LoadEntityByAlbum($album_id);
-        }
+
 
         $model->title = $album_title;
         $model->artist = $album_artist;
 
-        $meta->album_length = $album_length;
-        $meta->album_id = (int)$model->id;
-
-        $model->save();
         $meta->save();
+        $model->save();
     }
 }

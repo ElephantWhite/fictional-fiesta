@@ -11,7 +11,7 @@ $song = null; //destroy loaded entity to avoid too much thrashing.
         console.log(queryDict);
         if(queryDict['conf'] == true || false)
         {
-            location.assign("/default/songs/");
+            //location.assign("/default/songs/");
         }
 
         if(confirm("Are you sure you want to delete that song?")) {
@@ -23,7 +23,7 @@ $song = null; //destroy loaded entity to avoid too much thrashing.
             var redirString = "/default/songs/deleteSong?id=" + id + "&conf=true";
             window.location.assign(redirString);
         } else {
-            window.location.assign("/default/songs/");
+            //window.location.assign("/default/songs/");
         }
     });
 </script>

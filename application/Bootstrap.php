@@ -107,7 +107,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		error_reporting(E_ALL|E_STRICT);
 		Zend_Layout::startMvc(array("layoutPath" => APPLICATION_PATH."/layouts/scripts","layout" => "layout"));		
 		//this generates all models from db scheme (*** warning !! this will create models only if the model does not exists *****)
-        Doctrine_Core::generateModelsFromDb(dirname(__FILE__).'/modules/default/models', array('doctrine'), array('generateTableClasses' => true));	
+        Doctrine_Core::generateModelsFromDb(dirname(__FILE__).'/modules/default/models', array('doctrine'), array('generateTableClasses' => true));
 		
 		if(!Zend_Registry::isRegistered('Zend_Locale')){
 			//set locale
