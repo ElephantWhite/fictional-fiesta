@@ -24,7 +24,7 @@ $songs = $this->ar_songs;
     </thead>
     <?php
     foreach ($songs as $song):
-        $album = AlbumRepository::LoadAlbum($song['album_id']);
+        $album = Album::LoadEntity($song['album_id']);
         ?>
 
         <tbody>

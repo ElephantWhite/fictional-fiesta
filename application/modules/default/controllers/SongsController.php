@@ -57,7 +57,7 @@ class SongsController extends Zend_Controller_Action
         }
 
         $song = Songs::LoadEntity($id);
-        $album = AlbumRepository::LoadAlbum($song->album_id);
+        $album = Album::LoadEntity($song->album_id);
         $this->view->ar_songs = $song;
         $this->view->ar_albums = $album;
     }

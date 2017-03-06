@@ -94,7 +94,6 @@ class Album extends BaseAlbum
             throw new Exception("Album::SaveEntity: Album artist can not be empty.");
         }
 
-
         /**
          * @var Album $model
          */
@@ -107,20 +106,16 @@ class Album extends BaseAlbum
 
         if(!empty($model->id))
         {
-            $meta = $model->AlbumMeta;
+            $meta = AlbumMeta::LoadEntityByAlbum($album_id);
         }
 
         $model->title = $album_title;
         $model->artist = $album_artist;
-        $meta->album_length = $album_length;
-        $meta->album_id = $model->id;
 
-        var_dump($model);
-        var_dump($meta);
+        $meta->album_length = $album_length;
+        $meta->album_id = (int)$model->id;
 
         $model->save();
         $meta->save();
-
     }
-
 }

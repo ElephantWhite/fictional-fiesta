@@ -12,5 +12,28 @@
  */
 class AlbumMeta extends BaseAlbumMeta
 {
+    public static function LoadEntity($id)
+    {
+        $metaTable = Doctrine_Core::getTable("AlbumMeta");
+        $meta = $metaTable->find($id);
+        if(empty($meta))
+        {
+           throw new Exception("AlbumMeta::LoadEntity: No entity found for identifier " . $id);
+        }
+        return $meta;
+    }
 
+    public static function LoadEntityByAlbum($album_id)
+    {
+        $q_meta = Doctrine_Query::create()
+            ->select()
+            ->from("AlbumMeta am")
+            ->where("am.album_id = ?", $album_id);
+        $o_meta = $q_meta->fetchOne();
+        if(empty($o_meta))
+        {
+            throw new Exception("AlbumMeta::LoadEntityByAlbum: No entity found for identifier: " . $album_id);
+        }
+        return $o_meta;
+    }
 }
