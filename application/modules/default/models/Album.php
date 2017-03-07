@@ -52,10 +52,13 @@ class Album extends BaseAlbum
             throw new Exception("Songs::SaveEntity: The object passed to the function is empty.");
         }
 
+        var_dump($o_album);
+
         $album_id = empty($o_album['album_id']) ? null : $o_album['album_id'];
         $album_title = empty($o_album['album_title']) ? null : $o_album['album_title'];
         $album_artist = empty($o_album['album_artist']) ? null : $o_album['album_artist'];
         $album_length = empty($o_album['album_length']) ? null : $o_album['album_length'];
+
 
         if(empty($album_title))
         {
@@ -69,7 +72,7 @@ class Album extends BaseAlbum
         {
             throw new Exception("Album::SaveEntity: Album artist can not be empty.");
         }
-
+        
         $model = new Album();
         $meta = new AlbumMeta();
         if(isset($o_album['album_id']))

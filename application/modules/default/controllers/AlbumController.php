@@ -71,6 +71,7 @@ class AlbumController extends Zend_Controller_Action
      */
    public function addalbumAction()
    {
+
        $params = $this->getRequest()->getParams();
        if(isset($params['btn_submit']))
        {
@@ -80,9 +81,9 @@ class AlbumController extends Zend_Controller_Action
            $params['album_length']        = isset($params['txt_album_length'])    ? $params['txt_album_length']   : null;
 
            $o_album = array(
-               'id' => $params['album_id'],
-               'title' => $params['album_title'],
-               'artist' => $params['album_artist'],
+               'album_id' => $params['album_id'],
+               'album_title' => $params['album_title'],
+               'album_artist' => $params['album_artist'],
                'album_length' => $params['album_length']
            );
 
