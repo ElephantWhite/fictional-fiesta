@@ -10,28 +10,29 @@
 $count = count($this->ar_albums);
 if($count == 0)
 {
-    echo "Album doesn't exist";
-    die();
+    throw new Exception("album-details: No album was found for the given identifier.");
 }
 else if($count > 1 )
 {
-    echo "Something went wrong, try another album.";
-    die();
+    throw new Exception("album-details: There was an error.");
 }
 $var = null;
 echo "<a href='/album/index'>Index</a><br />";
+
+/**
+ * @var Album $album
+ */
 foreach($this->ar_albums as $album)
 {
-    $var = $album['id'];
-    echo "<h2>" . $album['title'] . "</h2><a href='/default/album/editAlbum?id=".$album['id']."'>Edit</a>";
-    echo "<p>Album title: " . $album['title'] . "</p>";
-    echo "<p>Album by: " . $album['artist'] . "</p>";
-    echo "<p>Album id: " . $album['id'] . "</p>";
-    echo "<p>Album length: " . $album['album_length'] . "</p>";
+    $var = $album->id;
+    echo "<h2>" . $album->title . "</h2><a href='/default/album/editAlbum?id=".$album->id."'>Edit</a>";
+    echo "<p>Album title: " . $album->title . "</p>";
+    echo "<p>Album by: " . $album->artist . "</p>";
+    echo "<p>Album id: " . $album->id . "</p>";
+    echo "<p>Album length: " . $album->AlbumMeta->album_length. "</p>";
     $amount_of_songs = count($this->ar_songs);
     echo "<p>Songs: " . $amount_of_songs . "</p>";
 }
-
 ?>
 
 <table>

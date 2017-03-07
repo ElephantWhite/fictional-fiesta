@@ -3,8 +3,6 @@ include "C:/wamp64/www/root3/application/repository/BaseRepository.php";
 class AlbumController extends Zend_Controller_Action
 {
     /**
-     * Init the controller. Get a zend session. I have no clue why but I did it anyway because the example did as well.
-     *
      * @return void
      */
     public function init()
@@ -14,43 +12,30 @@ class AlbumController extends Zend_Controller_Action
     }
 
     /**
-     * Show all albums on the index page.
-     *
      * @return void
      */
     public function indexAction()
     {
-        //create an array to store albums.
         $albums = array();
-        //$this->_helper->layout->disableLayout();
-
-        //create a query to select all albums
         $q_albums = Doctrine_Query::create()
             ->select()
             ->from("Album alb");
-        //Store all albums in a temporary variable.
         $temp_albums = $q_albums->fetchArray();
 
-        //make an actual array for all albums in the temporary albums variable.
         foreach($temp_albums as $album)
         {
-            //insert every album in the temp albums variable to the actual array
             array_push($albums, array('id' => $album['id'],
                 'artist' => $album['artist'],
                 'title' => $album['title']));
         }
-        // pass the albums to the view
         $this->view->ar_albums = $albums;
     }
 
     /**
-     * Edit the selected album and return to /album/index/ when done
-     *
      * @return void
      */
     public function editalbumAction()
     {
-        //Get request parameters (POST/GET)
         $params = $this->getRequest()->getParams();
         if(!isset($params['btn_submit']))
             $this->view->ar_album = Album::LoadEntity($params['id']);
@@ -69,10 +54,7 @@ class AlbumController extends Zend_Controller_Action
     }
 
     /**
-     * Delete the selected album from the database.
-     *
      * @return void
-     *
      */
     public function deletealbumAction()
     {
@@ -108,19 +90,16 @@ class AlbumController extends Zend_Controller_Action
            $this->_redirect("/default/album/index/");
        }
    }
-    
+
     /**
-     * Show ALL the details of the selected album, including the album metadata.
-     *
      * @return void
-     *
      */
     public function albumdetailsAction()
     {
-        //Get request parameters from POST and GET.
         $params = $this->getRequest()->getParams();
         $id = empty($params['id']) ? null : $params['id'];
-        $albums = Album::LoadAllEntities();
+        $album = Album::LoadEntity($id);
+        $albums = array( 0 => $album);
 
         $this->view->ar_songs = SongsRepository::LoadSongsPerAlbum($id);
         $this->view->ar_albums = $albums;
