@@ -96,4 +96,14 @@ class SongsController extends Zend_Controller_Action
             $this->_redirect("/default/songs/index/");
         }
     }
+
+    public function deletesongAction()
+    {
+        $params = $this->getRequest()->getParams();
+        if (isset($params['id']))
+        {
+            Songs::DeleteSong($params['id']);
+        }
+        $this->_redirect("/default/songs/index/");
+    }
 }

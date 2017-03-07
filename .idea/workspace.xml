@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd137523-d515-48fe-81af-5a2956579e98" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/models/Album.php" afterPath="$PROJECT_DIR$/application/modules/default/models/Album.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/controllers/SongsController.php" afterPath="$PROJECT_DIR$/application/modules/default/controllers/SongsController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,8 +34,8 @@
       <file leaf-file-name="AlbumController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="85" column="22" lean-forward="false" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
+            <state relative-caret-position="357">
+              <caret line="66" column="5" lean-forward="true" selection-start-line="58" selection-start-column="4" selection-end-line="66" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -51,11 +51,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Album.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Album.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/default/models/Album.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="294">
               <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AlbumMetaTable.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/modules/default/models/AlbumMetaTable.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -81,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SongsController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SongsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/SongsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state relative-caret-position="578">
+              <caret line="108" column="1" lean-forward="true" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -162,12 +172,12 @@
         <option value="$PROJECT_DIR$/application/modules/default/views/scripts/album/delete-album.phtml" />
         <option value="$PROJECT_DIR$/application/modules/default/views/scripts/album/index.phtml" />
         <option value="$PROJECT_DIR$/application/modules/default/views/scripts/album/album-details.phtml" />
-        <option value="$PROJECT_DIR$/application/modules/default/controllers/SongsController.php" />
         <option value="$PROJECT_DIR$/application/modules/default/models/Songs.php" />
         <option value="$PROJECT_DIR$/application/repository/AlbumRepository.php" />
         <option value="$PROJECT_DIR$/application/repository/SongsRepository.php" />
         <option value="$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php" />
         <option value="$PROJECT_DIR$/application/modules/default/models/Album.php" />
+        <option value="$PROJECT_DIR$/application/modules/default/controllers/SongsController.php" />
       </list>
     </option>
   </component>
@@ -553,12 +563,12 @@
       <workItem from="1488786873683" duration="14633000" />
       <workItem from="1488812854222" duration="2707000" />
       <workItem from="1488874318665" duration="10809000" />
-      <workItem from="1488890682656" duration="5441000" />
+      <workItem from="1488890682656" duration="5622000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136500000" />
+    <option name="totallyTimeSpent" value="136681000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -663,13 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="34" column="7" lean-forward="true" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/default/models/AlbumMetaTable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -951,26 +954,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/SongsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/Bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
           <caret line="109" column="8" lean-forward="false" selection-start-line="109" selection-start-column="8" selection-end-line="109" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/repository/SongsRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -991,14 +978,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="85" column="22" lean-forward="false" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/repository/AlbumRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1011,6 +990,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/default/models/AlbumMetaTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="66" column="5" lean-forward="true" selection-start-line="58" selection-start-column="4" selection-end-line="66" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/repository/SongsRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/SongsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="108" column="1" lean-forward="true" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
           <folding />
         </state>
       </provider>
