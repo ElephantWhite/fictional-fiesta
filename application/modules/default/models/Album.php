@@ -94,4 +94,26 @@ class Album extends BaseAlbum
 
         $model->save();
     }
+
+    /**
+     * @param integer $album_id
+     * @throws Exception
+     */
+    public static function DeleteAlbum($album_id)
+    {
+
+        $id = empty($id) ? $album_id : null;
+
+        if(empty($id))
+        {
+            throw new Exception("Album::DeleteAlbum: The identifier can not be empty.");
+        }
+
+        $q_delete_album = Doctrine_Query::create()
+            ->delete()
+            ->from("Album al")
+            ->where("al.id = ?", $id);
+        $q_delete_album->execute();
+        return;
+    }
 }

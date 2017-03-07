@@ -61,7 +61,7 @@ class AlbumController extends Zend_Controller_Action
         $params = $this->getRequest()->getParams();
         if (isset($params['id']))
         {
-            AlbumRepository::DeleteAlbum($params['id']);
+            Album::DeleteAlbum($params['id']);
         }
         $this->_redirect("/default/album/index/");
     }

@@ -16,25 +16,6 @@ class AlbumRepository
         return $o_result;
     }
 
-    /**
-     * @param $id
-     */
-    public static function DeleteAlbum($id)
-    {
-        if(isset($id))
-        {
-            if($id != null)
-            {
-                $q_deleteAlbum = Doctrine_Query::create()
-                    ->delete('Album alb')
-                    ->where('alb.id = ' . $id);
-                //Execute the created query.
-                $q_deleteAlbum->execute();
-                return;
-            }
-        }
-    }
-
     public static function SearchForAlbum($search_string)
     {
         if(empty($search_string))

@@ -64,24 +64,6 @@ class SongsController extends Zend_Controller_Action
 
     /**
      * @return void
-     * @throws Exception
-     */
-    public function deletesongAction()
-    {
-        $params = $this->getRequest()->getParams();
-        if (isset($params['id']))
-        {
-            SongsRepository::DeleteSong($params['id']);
-        }
-        else
-        {
-            throw new Exception("SongsController::DeleteSongAction: Parameter 'id' can not be empty.");
-        }
-        $this->_redirect("/default/songs/index/");
-    }
-
-    /**
-     * @return void
      */
     public function editsongAction()
     {

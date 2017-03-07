@@ -88,4 +88,22 @@ class Songs extends BaseSongs
 
         $model->save();
     }
+
+    public static function DeleteSong($song_id)
+    {
+
+        $id = empty($id) ? $song_id : null;
+
+        if(empty($id))
+        {
+            throw new Exception("Songs::DeleteSong: The identifier can not be empty.");
+        }
+
+        $q_delete_song = Doctrine_Query::create()
+            ->delete()
+            ->from("Songs s")
+            ->where("s.id = ?", $id);
+        $q_delete_song->execute();
+        return;
+    }
 }
