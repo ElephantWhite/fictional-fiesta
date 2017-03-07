@@ -12,6 +12,11 @@
  */
 class AlbumMeta extends BaseAlbumMeta
 {
+    /**
+     * @param integer $id
+     * @return Doctrine_Collection|Doctrine_Collection_OnDemand|Doctrine_Record|int|mixed|null
+     * @throws Exception
+     */
     public static function LoadEntity($id)
     {
         $metaTable = Doctrine_Core::getTable("AlbumMeta");
@@ -23,6 +28,11 @@ class AlbumMeta extends BaseAlbumMeta
         return $meta;
     }
 
+    /**
+     * @param integer $album_id
+     * @return bool|Doctrine_Record|mixed|null
+     * @throws Exception
+     */
     public static function LoadEntityByAlbum($album_id)
     {
         $q_meta = Doctrine_Query::create()
@@ -35,5 +45,19 @@ class AlbumMeta extends BaseAlbumMeta
             throw new Exception("AlbumMeta::LoadEntityByAlbum: No entity found for identifier: " . $album_id);
         }
         return $o_meta;
+    }
+
+    /**
+     * @return bool|Doctrine_Record|mixed|null
+     */
+    public static function LoadLastEntity()
+    {
+        $q_album_meta = Doctrine_Query::create()
+            ->select()
+            ->from("AlbumMeta am")
+            ->orderBy("Id DESC")
+            ->limit(1);
+        $o_album_meta = $q_album_meta->fetchOne();
+        return $o_album_meta;
     }
 }

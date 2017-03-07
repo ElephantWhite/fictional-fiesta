@@ -6,16 +6,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd137523-d515-48fe-81af-5a2956579e98" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/application/data/cache/zend_cache---app_cachedoctrine_models" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/application/data/cache/zend_cache---internal-metadatas---app_cachedoctrine_models" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/application/modules/default/models/generated/BaseAlbum.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/Bootstrap.php" afterPath="$PROJECT_DIR$/application/Bootstrap.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php" afterPath="$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/controllers/SongsController.php" afterPath="$PROJECT_DIR$/application/modules/default/controllers/SongsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/models/Album.php" afterPath="$PROJECT_DIR$/application/modules/default/models/Album.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/models/generated/BaseAlbumMeta.php" afterPath="$PROJECT_DIR$/application/modules/default/models/generated/BaseAlbumMeta.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/views/scripts/album/edit-album.phtml" afterPath="$PROJECT_DIR$/application/modules/default/views/scripts/album/edit-album.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/models/AlbumMeta.php" afterPath="$PROJECT_DIR$/application/modules/default/models/AlbumMeta.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/views/scripts/album/delete-album.phtml" afterPath="$PROJECT_DIR$/application/modules/default/views/scripts/album/delete-album.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/views/scripts/album/index.phtml" afterPath="$PROJECT_DIR$/application/modules/default/views/scripts/album/index.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/views/scripts/songs/delete-song.phtml" afterPath="$PROJECT_DIR$/application/modules/default/views/scripts/songs/delete-song.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/views/scripts/songs/index.phtml" afterPath="$PROJECT_DIR$/application/modules/default/views/scripts/songs/index.phtml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,21 +40,81 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="AlbumController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AlbumController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="668">
-              <caret line="146" column="45" lean-forward="true" selection-start-line="146" selection-start-column="45" selection-end-line="146" selection-end-column="45" />
+            <state relative-caret-position="566">
+              <caret line="86" column="7" lean-forward="true" selection-start-line="86" selection-start-column="7" selection-end-line="86" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Album.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="delete-album.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/album/delete-album.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Album.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/default/models/Album.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+            <state relative-caret-position="668">
+              <caret line="95" column="5" lean-forward="true" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="song-details.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/songs/song-details.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="delete-song.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/songs/delete-song.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="2" lean-forward="false" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SongsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/SongsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="72" column="9" lean-forward="true" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/songs/index.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="774">
+              <caret line="56" column="13" lean-forward="true" selection-start-line="47" selection-start-column="4" selection-end-line="56" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AlbumMeta.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/modules/default/models/AlbumMeta.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="749">
+              <caret line="62" column="1" lean-forward="true" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -64,8 +123,8 @@
       <file leaf-file-name="index.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/album/index.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+            <state relative-caret-position="299">
+              <caret line="32" column="12" lean-forward="true" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -74,15 +133,9 @@
       <file leaf-file-name="album-details.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/album/album-details.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="725">
+            <state relative-caret-position="493">
               <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="39" />
-              <folding>
-                <marker date="1488814757556" expanded="true" signature="874:1091" ph="..." />
-                <marker date="1488814757556" expanded="true" signature="886:1091" ph="..." />
-                <marker date="1488814757556" expanded="true" signature="899:1091" ph="..." />
-                <marker date="1488814757556" expanded="true" signature="1225:1346" ph="..." />
-                <marker date="1488814757556" expanded="true" signature="1319:1346" ph="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -123,7 +176,6 @@
         <option value="$PROJECT_DIR$/application/modules/default/models/Songs.php" />
         <option value="$PROJECT_DIR$/application/modules/default/views/scripts/songs/edit-song.phtml" />
         <option value="$PROJECT_DIR$/application/modules/default/controllers/SearchController.php" />
-        <option value="$PROJECT_DIR$/application/modules/default/views/scripts/album/index.phtml" />
         <option value="$PROJECT_DIR$/application/layouts/scripts/defaultlayout.phtml" />
         <option value="$PROJECT_DIR$/application/modules/default/views/scripts/search/index.phtml" />
         <option value="$PROJECT_DIR$/application/modules/default/controllers/IndexController.php" />
@@ -132,18 +184,19 @@
         <option value="$PROJECT_DIR$/application/repository/SongsRepository.php" />
         <option value="$PROJECT_DIR$/application/repository/AlbumRepository.php" />
         <option value="$PROJECT_DIR$/application/modules/default/models/generated/BaseSongs.php" />
-        <option value="$PROJECT_DIR$/application/modules/default/models/AlbumMeta.php" />
-        <option value="$PROJECT_DIR$/application/modules/default/controllers/SongsController.php" />
-        <option value="$PROJECT_DIR$/application/modules/default/views/scripts/songs/index.phtml" />
-        <option value="$PROJECT_DIR$/application/modules/default/views/scripts/album/delete-album.phtml" />
-        <option value="$PROJECT_DIR$/application/modules/default/views/scripts/songs/delete-song.phtml" />
         <option value="$PROJECT_DIR$/application/modules/default/views/scripts/album/edit-album.phtml" />
         <option value="$PROJECT_DIR$/application/modules/default/models/generated/BaseAlbumMeta.php" />
         <option value="$PROJECT_DIR$/application/modules/default/models/generated/BaseAlbum.php" />
         <option value="$PROJECT_DIR$/application/Bootstrap.php" />
-        <option value="$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php" />
         <option value="$PROJECT_DIR$/application/modules/default/views/scripts/album/album-details.phtml" />
+        <option value="$PROJECT_DIR$/application/modules/default/models/AlbumMeta.php" />
         <option value="$PROJECT_DIR$/application/modules/default/models/Album.php" />
+        <option value="$PROJECT_DIR$/application/modules/default/views/scripts/songs/index.phtml" />
+        <option value="$PROJECT_DIR$/application/modules/default/views/scripts/songs/delete-song.phtml" />
+        <option value="$PROJECT_DIR$/application/modules/default/controllers/SongsController.php" />
+        <option value="$PROJECT_DIR$/application/modules/default/views/scripts/album/delete-album.phtml" />
+        <option value="$PROJECT_DIR$/application/modules/default/views/scripts/album/index.phtml" />
+        <option value="$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php" />
       </list>
     </option>
   </component>
@@ -659,12 +712,13 @@
       <workItem from="1488448400923" duration="8716000" />
       <workItem from="1488530996334" duration="3472000" />
       <workItem from="1488786873683" duration="14633000" />
-      <workItem from="1488812854222" duration="2483000" />
+      <workItem from="1488812854222" duration="2707000" />
+      <workItem from="1488874318665" duration="5458000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120026000" />
+    <option name="totallyTimeSpent" value="125708000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -901,14 +955,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/songs/song-details.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/repository/SongsRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -945,7 +991,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33609">
           <caret line="1977" column="21" lean-forward="true" selection-start-line="1976" selection-start-column="0" selection-end-line="1983" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -961,38 +1006,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
           <caret line="46" column="33" lean-forward="true" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/SongsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="26" column="36" lean-forward="false" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/songs/index.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="27" lean-forward="false" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/songs/delete-song.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="9" lean-forward="true" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/album/delete-album.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="54" lean-forward="false" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
           <folding />
         </state>
       </provider>
@@ -1038,10 +1051,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="749">
           <caret line="49" column="1" lean-forward="false" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
-          <folding>
-            <marker date="1488814769465" expanded="true" signature="1375:1378" ph="..." />
-            <marker date="1488814769465" expanded="true" signature="1375:1379" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1061,19 +1071,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/default/models/AlbumMeta.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="5" lean-forward="false" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/data/cache/zend_cache---internal-metadatas---app_cachedoctrine_models">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1081,44 +1082,85 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/album/album-details.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/default/models/AlbumMeta.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="749">
+          <caret line="62" column="1" lean-forward="true" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/songs/song-details.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/default/models/Album.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="668">
+          <caret line="95" column="5" lean-forward="true" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/SongsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="72" column="9" lean-forward="true" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/songs/delete-song.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="2" lean-forward="false" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/songs/index.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="56" column="13" lean-forward="true" selection-start-line="47" selection-start-column="4" selection-end-line="56" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/album/index.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+        <state relative-caret-position="299">
+          <caret line="32" column="12" lean-forward="true" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/album/delete-album.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="668">
-          <caret line="146" column="45" lean-forward="true" selection-start-line="146" selection-start-column="45" selection-end-line="146" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/default/views/scripts/album/album-details.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="39" />
-          <folding>
-            <marker date="1488814757556" expanded="true" signature="874:1091" ph="..." />
-            <marker date="1488814757556" expanded="true" signature="886:1091" ph="..." />
-            <marker date="1488814757556" expanded="true" signature="899:1091" ph="..." />
-            <marker date="1488814757556" expanded="true" signature="1225:1346" ph="..." />
-            <marker date="1488814757556" expanded="true" signature="1319:1346" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/default/models/Album.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        <state relative-caret-position="566">
+          <caret line="86" column="7" lean-forward="true" selection-start-line="86" selection-start-column="7" selection-end-line="86" selection-end-column="7" />
           <folding />
         </state>
       </provider>

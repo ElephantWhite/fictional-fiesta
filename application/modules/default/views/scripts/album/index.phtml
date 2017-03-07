@@ -26,9 +26,19 @@ foreach($this->ar_albums as $album)
         //echo "<td class=\"table_space\">" . $album['id'] . "</td>";
         echo "<td class=\"table_space\">" . $album['title'] . "</td>";
         echo "<td class='table_space'>" . $album['artist'] . "</td>";
-        echo "<td class=\"table_space\"> <a href='/album/albumDetails?id=" . $album['id'] . "'>Details</a> || <a href='/album/editAlbum?id=" . $album['id'] . "'>Edit</a> || <a href='/album/deleteAlbum?id=" . $album['id'] . "'>Delete</a>" . "</td>";
+        echo "<td class=\"table_space\"> <a href='/album/albumDetails?id=" . $album['id'] . "'>Details</a> || <a href='/album/editAlbum?id=" . $album['id'] . "'>Edit</a> || <a href='/album/deleteAlbum?id=" . $album['id'] . "' class='conf'>Delete</a>" . "</td>";
     echo "</tr>";
 }
 ?>
     </tbody>
 </table>
+<script type="text/javascript">
+    var elements = document.getElementsByClassName('conf');
+    var conf = function(e) {
+        if(!confirm('Are you sure you want to delete this song?')) e.preventDefault();
+    };
+    for(var i = 0, l = elements.length; i < l; i++) {
+        elements[i].addEventListener('click', conf, false);
+        console.log(elements[i]);
+    }
+</script>

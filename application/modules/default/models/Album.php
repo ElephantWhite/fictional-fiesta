@@ -12,13 +12,11 @@
  */
 class Album extends BaseAlbum
 {
-
-    public function preInsert($event)
-    {
-        
-    }
-
-    //function doesn't work as it should.
+    /**
+     * @param $id
+     * @return Doctrine_Collection|Doctrine_Collection_OnDemand|Doctrine_Record|int|mixed|null
+     * @throws Exception
+     */
     public static function LoadEntity($id)
     {
         $albumTable = Doctrine_Core::getTable('Album');
@@ -30,6 +28,9 @@ class Album extends BaseAlbum
         return $album;
     }
 
+    /**
+     * @return array|Doctrine_Collection|Doctrine_Collection_OnDemand|int|mixed
+     */
     public static function LoadAllEntities()
     {
         $q_albums = Doctrine_Query::create()
@@ -69,9 +70,6 @@ class Album extends BaseAlbum
             throw new Exception("Album::SaveEntity: Album artist can not be empty.");
         }
 
-        /**
-         * @var Album $model
-         */
         $model = new Album();
         $meta = new AlbumMeta();
         if(isset($o_album['album_id']))
@@ -80,12 +78,20 @@ class Album extends BaseAlbum
             $meta = $model->AlbumMeta;
         }
 
-
-
         $model->title = $album_title;
         $model->artist = $album_artist;
 
+        $meta->album_length = $album_length;
         $meta->save();
+
+        /**
+         * @var AlbumMeta $meta
+         */
+        $meta = AlbumMeta::LoadLastEntity();
+
+        if(empty($model->album_meta_id))
+            $model->album_meta_id = $meta->id;
+
         $model->save();
     }
 }
