@@ -13,7 +13,7 @@
 class Album extends BaseAlbum
 {
     /**
-     * @param $id
+     * @param integer $id
      * @return Doctrine_Collection|Doctrine_Collection_OnDemand|Doctrine_Record|int|mixed|null
      * @throws Exception
      */
@@ -85,9 +85,6 @@ class Album extends BaseAlbum
         $meta->album_length = $album_length;
         $meta->save();
 
-        /**
-         * @var AlbumMeta $meta
-         */
         $meta = AlbumMeta::LoadLastEntity();
 
         if(empty($model->album_meta_id))

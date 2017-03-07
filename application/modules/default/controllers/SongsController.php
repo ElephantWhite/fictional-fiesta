@@ -97,6 +97,9 @@ class SongsController extends Zend_Controller_Action
         }
     }
 
+    /**
+     * @return void
+     */
     public function deletesongAction()
     {
         $params = $this->getRequest()->getParams();

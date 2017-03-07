@@ -1,6 +1,11 @@
 <?php
 class SongsRepository
 {
+    /**
+     * @param integer $album_id
+     * @return array
+     * @throws Exception
+     */
     public static function LoadSongsPerAlbum($album_id)
     {
         if(empty($album_id))
@@ -11,6 +16,11 @@ class SongsRepository
         return $o_album->Songs;
     }
 
+    /**
+     * @param string $search_string
+     * @return array|Doctrine_Collection|Doctrine_Collection_OnDemand|int|mixed
+     * @throws Exception
+     */
     public static function SearchForSong($search_string)
     {
         if(empty($search_string))

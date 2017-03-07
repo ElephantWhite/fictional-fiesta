@@ -14,7 +14,7 @@ class Songs extends BaseSongs
 {
 
     /**
-     * @param int $id
+     * @param integer $id
      * @return Doctrine_Collection|Doctrine_Collection_OnDemand|Doctrine_Record|int|mixed|null
      * @throws Exception
      */
@@ -30,7 +30,7 @@ class Songs extends BaseSongs
     }
 
     /**
-     * @return array
+     * @return array|Doctrine_Collection|Doctrine_Collection_OnDemand|int|mixed
      */
     public static function LoadAllEntities()
     {
@@ -72,9 +72,6 @@ class Songs extends BaseSongs
             throw new Exception("Songs:SaveEntity: Song must be linked to an album. (Album id is empty)");
         }
 
-        /**
-         * @var Songs $model
-         */
         $model = new Songs();
 
         if(isset($o_song['song_id']))
@@ -89,6 +86,10 @@ class Songs extends BaseSongs
         $model->save();
     }
 
+    /**
+     * @param integer $song_id
+     * @throws Exception
+     */
     public static function DeleteSong($song_id)
     {
 

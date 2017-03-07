@@ -1,6 +1,11 @@
 <?php
 class AlbumRepository
 {
+    /**
+     * @param integer $album_id
+     * @return bool|Doctrine_Record|mixed|null
+     * @throws Exception
+     */
     public static function LoadAlbumMetaByAlbumId($album_id)
     {
         if(empty($album_id))
@@ -16,6 +21,11 @@ class AlbumRepository
         return $o_result;
     }
 
+    /**
+     * @param string $search_string
+     * @return array|Doctrine_Collection|Doctrine_Collection_OnDemand|int|mixed
+     * @throws Exception
+     */
     public static function SearchForAlbum($search_string)
     {
         if(empty($search_string))
