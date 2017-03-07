@@ -6,15 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd137523-d515-48fe-81af-5a2956579e98" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php" afterPath="$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/controllers/SongsController.php" afterPath="$PROJECT_DIR$/application/modules/default/controllers/SongsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/models/Album.php" afterPath="$PROJECT_DIR$/application/modules/default/models/Album.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/models/AlbumMeta.php" afterPath="$PROJECT_DIR$/application/modules/default/models/AlbumMeta.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/views/scripts/album/delete-album.phtml" afterPath="$PROJECT_DIR$/application/modules/default/views/scripts/album/delete-album.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/views/scripts/album/index.phtml" afterPath="$PROJECT_DIR$/application/modules/default/views/scripts/album/index.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/views/scripts/songs/delete-song.phtml" afterPath="$PROJECT_DIR$/application/modules/default/views/scripts/songs/delete-song.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/default/views/scripts/songs/index.phtml" afterPath="$PROJECT_DIR$/application/modules/default/views/scripts/songs/index.phtml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,8 +35,8 @@
       <file leaf-file-name="AlbumController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="86" column="7" lean-forward="true" selection-start-line="86" selection-start-column="7" selection-end-line="86" selection-end-column="7" />
+            <state relative-caret-position="406">
+              <caret line="110" column="4" lean-forward="false" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -713,12 +705,12 @@
       <workItem from="1488530996334" duration="3472000" />
       <workItem from="1488786873683" duration="14633000" />
       <workItem from="1488812854222" duration="2707000" />
-      <workItem from="1488874318665" duration="5458000" />
+      <workItem from="1488874318665" duration="6166000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125708000" />
+    <option name="totallyTimeSpent" value="126416000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -991,6 +983,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33609">
           <caret line="1977" column="21" lean-forward="true" selection-start-line="1976" selection-start-column="0" selection-end-line="1983" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1159,8 +1152,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/default/controllers/AlbumController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="86" column="7" lean-forward="true" selection-start-line="86" selection-start-column="7" selection-end-line="86" selection-end-column="7" />
+        <state relative-caret-position="406">
+          <caret line="110" column="4" lean-forward="false" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
           <folding />
         </state>
       </provider>

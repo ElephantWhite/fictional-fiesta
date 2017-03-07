@@ -108,8 +108,7 @@ class AlbumController extends Zend_Controller_Action
            $this->_redirect("/default/album/index/");
        }
    }
-
-
+    
     /**
      * Show ALL the details of the selected album, including the album metadata.
      *
@@ -120,28 +119,9 @@ class AlbumController extends Zend_Controller_Action
     {
         //Get request parameters from POST and GET.
         $params = $this->getRequest()->getParams();
-        $id = isset($params['id']) ? $params['id'] : 0;
-        $albums = array();
+        $id = empty($params['id']) ? null : $params['id'];
+        $albums = Album::LoadAllEntities();
 
-        $q_albums = Doctrine_Query::create()
-            ->from("Album alb")
-            ->leftJoin("alb.AlbumMeta am")
-            ->orderBy('id')
-            ->where('alb.id = ' . $id);
-
-        $temp_albums = $q_albums->fetchArray();
-
-        foreach($temp_albums as $album)
-        {
-            if($album['AlbumMeta']['album_length'] == null)
-            {
-                $album['AlbumMeta']['album_length'] = 0;
-            }
-            array_push($albums, array('id' => $album['id'],
-                'artist' => $album['artist'],
-                'title' => $album['title'],
-                'album_length' => $album['AlbumMeta']['album_length']));
-        }
         $this->view->ar_songs = SongsRepository::LoadSongsPerAlbum($id);
         $this->view->ar_albums = $albums;
     }
