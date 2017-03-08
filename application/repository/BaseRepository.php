@@ -1,6 +1,6 @@
 <?php
-include "C:/wamp64/www/root3/application/repository/AlbumRepository.php";
-include "C:/wamp64/www/root3/application/repository/SongsRepository.php";
+include __DIR__ . "/AlbumRepository.php";
+include __DIR__ . "/SongsRepository.php";
 class BaseRepository
 {
     /**

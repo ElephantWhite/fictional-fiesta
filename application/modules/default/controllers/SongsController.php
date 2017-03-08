@@ -1,5 +1,5 @@
 <?php
-include "C:/wamp64/www/root3/application/repository/BaseRepository.php";
+include __DIR__ . "/../../../repository/BaseRepository.php";
 class SongsController extends Zend_Controller_Action
 {
     /**
