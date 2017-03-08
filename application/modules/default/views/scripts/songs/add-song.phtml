@@ -40,7 +40,7 @@ if($_GET)
             <td>
                 <select name="slct_album" id="slct_album">
                     <?php
-                        $albums = AlbumRepository::LoadAllAlbums();
+                        $albums = Album::LoadAllEntities();
                         foreach($albums as $album)
                         {
                             if($album['id'] == $var )
