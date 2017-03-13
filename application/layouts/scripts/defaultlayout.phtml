@@ -161,7 +161,7 @@
                 document.getElementById("search").innerHTML = xmlhttp.responseText;
             }
         };
-        xmlhttp.open("GET", "search?s="+string, true);
+        xmlhttp.open("GET", "/default/album/search?s="+string, true);
         xmlhttp.send(null);
     }
 </script>
