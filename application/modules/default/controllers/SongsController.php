@@ -109,4 +109,9 @@ class SongsController extends Zend_Controller_Action
         }
         $this->_redirect("/default/songs/index/");
     }
+
+    public function searchAction()
+    {
+        $this->_helper->layout->disableLayout();
+    }
 }

@@ -106,6 +106,18 @@
 	  		margin-left: 2%;
 	  		margin-right: 2%;
 	  	}
+        #search{
+            width: 500px; margin: 0 auto; border: 1px solid #f4f4f4; overflow: hidden;
+        }
+        #text{
+            width: 250px; padding: 10px; border: 1px solid #f4f4f4; border-radius: 3px;
+        }
+        #searchtitle{
+            width: 250px; padding: 10px; background: #fff;
+        }
+        #searchtitle:hover{
+            background: #f4545f;
+        }
 	</style>
 
 	
@@ -120,7 +132,9 @@
     		<div id="menu_right">
     			<div id="searchbalk" class="input-group" >
   					<span class="input-group-addon" id="sizing-addon2"><li class="fa fa-search"></li></span>
-  					<input type="text" id="search" class="form-control" placeholder="Search on title:" aria-describedby="sizing-addon2">
+  					<input type="text" placeholder="Type to search.." onkeyup="search(this.value)" id="text" >
+                    <div id="search">
+                    </div>
                 </div>
     		</div>
 
@@ -135,10 +149,20 @@
 
 	</div>
 <script type="text/javascript">
-    function Search() {
-        var searchQuery = document.getElementById("search").value;
-        console.log("searched. String is now:" . searchQuery);
-        window.location.assign("http://zf.localhost/default/search/index/str/" + searchQuery);
+    function search(string){
+        var xmlhttp;
+        if(window.XMLHttpRequest){
+            xmlhttp = new XMLHttpRequest();
+        }else{
+            xmlhttp = new ActiveXObject("XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function(){
+            if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                document.getElementById("search").innerHTML = xmlhttp.responseText;
+            }
+        };
+        xmlhttp.open("GET", "search?s="+string, true);
+        xmlhttp.send(null);
     }
 </script>
 </body>

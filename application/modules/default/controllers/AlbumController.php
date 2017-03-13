@@ -107,4 +107,9 @@ class AlbumController extends Zend_Controller_Action
         $this->view->ar_songs = SongsRepository::LoadSongsPerAlbum($id);
         $this->view->ar_albums = $albums;
     }
+
+    public function searchAction()
+    {
+        $this->_helper->layout->disableLayout();
+    }
 }

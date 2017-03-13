@@ -1,0 +1,26 @@
+<?php
+if(isset($_GET['s']) && $_GET['s'] != ''){
+    $s = $_GET['s'];
+    $item = BaseRepository::Search($s);
+    $url = key($item)."/";
+    echo "Albums<br/>";
+    foreach($item['albums'] as $row)
+    {
+
+        $title = $row['title'];
+        $url = "/default/album/albumDetails?id=".$row['id'];
+        echo "<div style='' id='searchtitle'>" . "<a style='font-family: verdana; text-decoration: none; color: black;' href='$url'>" . $title . "</a>" . "</div>";
+
+    }
+    echo "Songs<br/>";
+    foreach($item['songs'] as $row)
+    {
+
+        $title = $row['title'];
+        $url = "/default/songs/songDetails?id=".$row['id'];
+        echo "<div style='' id='searchtitle'>" . "<a style='font-family: verdana; text-decoration: none; color: black;' href='$url'>" . $title . "</a>" . "</div>";
+
+    }
+}
+
+?>
