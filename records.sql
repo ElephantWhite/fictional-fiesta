@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2017 at 12:45 PM
+-- Generation Time: Mar 13, 2017 at 09:57 AM
 -- Server version: 5.7.14
 -- PHP Version: 7.0.10
 
@@ -47,11 +47,10 @@ INSERT INTO `album` (`id`, `artist`, `title`, `album_meta_id`) VALUES
 (69, 'In Flames', 'Soundtrack To Your Escape', 70),
 (71, 'The Eagles', 'Hell Freezes Over', 0),
 (72, 'Pink Floyd', 'The Dark Side Of The Moon', 0),
-(73, 'Pink Floyd', 'Wish You Were Here', 0),
+(73, 'Pink Floyd', 'Wish You Were Here', 76),
 (74, 'Jesse Cook', 'One World', 0),
 (75, 'In Flames', 'Come Clarity', 0),
-(76, 'In Flames', 'A Sense Of Purpose', 0),
-(77, 'In Flames', 'Sounds Of a Playground Fading', 71);
+(76, 'In Flames', 'A Sense Of Purpose', 75);
 
 -- --------------------------------------------------------
 
@@ -87,7 +86,12 @@ INSERT INTO `album_meta` (`id`, `album_length`) VALUES
 (68, '55 Minutes'),
 (69, '69 Minutes'),
 (70, '50 Minutes'),
-(71, '50 Minutes');
+(71, '50 Minutes'),
+(72, '50 Minutes'),
+(73, 'test'),
+(74, 'test'),
+(75, '55 min'),
+(76, '1 Hour');
 
 -- --------------------------------------------------------
 
@@ -246,7 +250,6 @@ INSERT INTO `songs` (`id`, `album_id`, `title`, `length`) VALUES
 (158, 75, 'Your Bedtime Story Is Scaring Everyone', '5:19'),
 (159, 76, 'Disconnected', '3:37'),
 (160, 76, 'Sleepless Again', '4:10'),
-(161, 76, 'Alias', '4:49'),
 (162, 76, 'I\'m The Highway', '3:41'),
 (163, 76, 'Delight And Angers', '3:39'),
 (164, 76, 'Move Through Me', '3:06'),
@@ -256,21 +259,7 @@ INSERT INTO `songs` (`id`, `album_id`, `title`, `length`) VALUES
 (168, 76, 'Drenched In Fear', '3:30'),
 (169, 76, 'March To The Shore', '3:28'),
 (170, 76, 'Eraser', '3:20'),
-(171, 76, 'Titlt', '3:48'),
-(172, 76, 'Abnegation', '3:44'),
-(173, 77, 'Sounds of A Playground Fading', '4:44'),
-(174, 77, 'Deliver Us', '3:31'),
-(175, 77, 'All For Me', '4:30'),
-(176, 77, 'The Puzzle', '4:33'),
-(177, 77, 'Fear Is The Weakness', '4:05'),
-(178, 77, 'Where The Dead Ships Dwell', '4:25'),
-(179, 77, 'The Attic', '3:17'),
-(180, 77, 'Darker Times', '3:24'),
-(181, 77, 'Ropes', '3:43'),
-(182, 77, 'Enter Tragedy', '3:59'),
-(183, 77, 'Jester\'s Door', '2:37'),
-(184, 77, 'A New Dawn', '5:51'),
-(185, 77, 'Liberation', '5:09');
+(171, 76, 'Titlt', '3:48');
 
 --
 -- Indexes for dumped tables
@@ -305,17 +294,17 @@ ALTER TABLE `songs`
 -- AUTO_INCREMENT for table `album`
 --
 ALTER TABLE `album`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT for table `album_meta`
 --
 ALTER TABLE `album_meta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT for table `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 --
 -- Constraints for dumped tables
 --
