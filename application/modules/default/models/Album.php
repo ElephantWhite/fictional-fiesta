@@ -87,8 +87,8 @@ class Album extends BaseAlbum
 
         $meta = AlbumMeta::LoadLastEntity();
 
-        if(empty($model->album_meta_id))
-            $model->album_meta_id = $meta->id;
+        if(empty($model->meta_id))
+            $model->meta_id = $meta->meta_id;
 
         $model->save();
     }

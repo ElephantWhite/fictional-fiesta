@@ -26,7 +26,9 @@ class AlbumController extends Zend_Controller_Action
         {
             array_push($albums, array('id' => $album['id'],
                 'artist' => $album['artist'],
-                'title' => $album['title']));
+                'title' => $album['title'],
+                'meta_id' => $album['meta_id']
+            ));
         }
         $this->view->ar_albums = $albums;
     }

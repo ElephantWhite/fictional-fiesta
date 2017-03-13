@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2017 at 10:18 AM
+-- Generation Time: Mar 13, 2017 at 11:21 AM
 -- Server version: 5.7.14
 -- PHP Version: 7.0.10
 
@@ -30,27 +30,27 @@ CREATE TABLE `album` (
   `id` int(11) NOT NULL,
   `artist` varchar(100) COLLATE utf8_bin NOT NULL,
   `title` varchar(100) COLLATE utf8_bin NOT NULL,
-  `album_meta_id` int(11) NOT NULL
+  `meta_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `album`
 --
 
-INSERT INTO `album` (`id`, `artist`, `title`, `album_meta_id`) VALUES
-(30, 'In Flames', 'Clayman', 67),
-(63, 'In Flames', 'Lunar Strain', 0),
-(65, 'In Flames', 'Subterranean', 0),
-(66, 'In Flames', 'Whoracle', 0),
-(67, 'In Flames', 'Colony', 0),
-(68, 'In Flames', 'Reroute To Remain', 69),
-(69, 'In Flames', 'Soundtrack To Your Escape', 70),
-(71, 'The Eagles', 'Hell Freezes Over', 0),
-(72, 'Pink Floyd', 'The Dark Side Of The Moon', 0),
-(73, 'Pink Floyd', 'Wish You Were Here', 76),
-(74, 'Jesse Cook', 'One World', 0),
-(75, 'In Flames', 'Come Clarity', 0),
-(76, 'In Flames', 'A Sense Of Purpose', 75);
+INSERT INTO `album` (`id`, `artist`, `title`, `meta_id`) VALUES
+(30, 'In Flames', 'Clayman', 13),
+(63, 'In Flames', 'Lunar Strain', 13),
+(65, 'In Flames', 'Subterranean', 13),
+(66, 'In Flames', 'Whoracle', 13),
+(67, 'In Flames', 'Colony', 13),
+(68, 'In Flames', 'Reroute To Remain', 13),
+(69, 'In Flames', 'Soundtrack To Your Escape', 13),
+(71, 'The Eagles', 'Hell Freezes Over', 13),
+(72, 'Pink Floyd', 'The Dark Side Of The Moon', 13),
+(73, 'Pink Floyd', 'Wish You Were Here', 13),
+(74, 'Jesse Cook', 'One World', 13),
+(75, 'In Flames', 'Come Clarity', 13),
+(76, 'In Flames', 'A Sense Of Purpose', 13);
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,7 @@ INSERT INTO `album` (`id`, `artist`, `title`, `album_meta_id`) VALUES
 --
 
 CREATE TABLE `album_meta` (
-  `id` int(11) NOT NULL,
+  `meta_id` int(11) NOT NULL,
   `album_length` varchar(50) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -67,7 +67,7 @@ CREATE TABLE `album_meta` (
 -- Dumping data for table `album_meta`
 --
 
-INSERT INTO `album_meta` (`id`, `album_length`) VALUES
+INSERT INTO `album_meta` (`meta_id`, `album_length`) VALUES
 (13, '58 Minutes'),
 (51, '1 Hour 36 Minutes'),
 (53, '38 Minutes'),
@@ -91,7 +91,10 @@ INSERT INTO `album_meta` (`id`, `album_length`) VALUES
 (73, 'test'),
 (74, 'test'),
 (75, '55 min'),
-(76, '1 Hour');
+(76, '1 Hour'),
+(77, '1hour'),
+(78, '1hour'),
+(79, '1hour');
 
 -- --------------------------------------------------------
 
@@ -270,14 +273,15 @@ INSERT INTO `songs` (`id`, `album_id`, `title`, `length`) VALUES
 -- Indexes for table `album`
 --
 ALTER TABLE `album`
-  ADD PRIMARY KEY (`id`,`album_meta_id`),
-  ADD KEY `fk_album_album_meta1_idx` (`album_meta_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `fk_album_album_meta` (`meta_id`);
 
 --
 -- Indexes for table `album_meta`
 --
 ALTER TABLE `album_meta`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`meta_id`);
 
 --
 -- Indexes for table `songs`
@@ -295,17 +299,17 @@ ALTER TABLE `songs`
 -- AUTO_INCREMENT for table `album`
 --
 ALTER TABLE `album`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 --
 -- AUTO_INCREMENT for table `album_meta`
 --
 ALTER TABLE `album_meta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `meta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 --
 -- AUTO_INCREMENT for table `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 --
 -- Constraints for dumped tables
 --
@@ -314,7 +318,7 @@ ALTER TABLE `songs`
 -- Constraints for table `album`
 --
 ALTER TABLE `album`
-  ADD CONSTRAINT `fk_album-album_meta` FOREIGN KEY (`album_meta_id`) REFERENCES `album_meta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_album_album_meta` FOREIGN KEY (`meta_id`) REFERENCES `album_meta` (`meta_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `songs`

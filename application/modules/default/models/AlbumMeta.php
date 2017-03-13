@@ -17,10 +17,10 @@ class AlbumMeta extends BaseAlbumMeta
      * @return Doctrine_Collection|Doctrine_Collection_OnDemand|Doctrine_Record|int|mixed|null
      * @throws Exception
      */
-    public static function LoadEntity($id)
+    public static function LoadEntity($meta_id)
     {
         $metaTable = Doctrine_Core::getTable("AlbumMeta");
-        $meta = $metaTable->find($id);
+        $meta = $metaTable->find($meta_id);
         if(empty($meta))
         {
            throw new Exception("AlbumMeta::LoadEntity: No entity found for identifier " . $id);
@@ -55,7 +55,7 @@ class AlbumMeta extends BaseAlbumMeta
         $q_album_meta = Doctrine_Query::create()
             ->select()
             ->from("AlbumMeta am")
-            ->orderBy("Id DESC")
+            ->orderBy("meta_id DESC")
             ->limit(1);
         $o_album_meta = $q_album_meta->fetchOne();
         return $o_album_meta;
