@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2017 at 09:57 AM
+-- Generation Time: Mar 13, 2017 at 10:18 AM
 -- Server version: 5.7.14
 -- PHP Version: 7.0.10
 
@@ -259,7 +259,8 @@ INSERT INTO `songs` (`id`, `album_id`, `title`, `length`) VALUES
 (168, 76, 'Drenched In Fear', '3:30'),
 (169, 76, 'March To The Shore', '3:28'),
 (170, 76, 'Eraser', '3:20'),
-(171, 76, 'Titlt', '3:48');
+(171, 76, 'Titlt', '3:48'),
+(172, 30, 'Clayman', '3:20');
 
 --
 -- Indexes for dumped tables
@@ -269,7 +270,7 @@ INSERT INTO `songs` (`id`, `album_id`, `title`, `length`) VALUES
 -- Indexes for table `album`
 --
 ALTER TABLE `album`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id`,`album_meta_id`),
   ADD KEY `fk_album_album_meta1_idx` (`album_meta_id`);
 
 --
@@ -304,7 +305,7 @@ ALTER TABLE `album_meta`
 -- AUTO_INCREMENT for table `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 --
 -- Constraints for dumped tables
 --
@@ -313,7 +314,7 @@ ALTER TABLE `songs`
 -- Constraints for table `album`
 --
 ALTER TABLE `album`
-  ADD CONSTRAINT `fk_album_album_meta1` FOREIGN KEY (`album_meta_id`) REFERENCES `album_meta` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_album-album_meta` FOREIGN KEY (`album_meta_id`) REFERENCES `album_meta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `songs`
